@@ -1,0 +1,54 @@
+
+
+.aboutCoficab {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #96961c; /* Beige background color */
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content-wrapper-about {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: right;
+}
+
+.text-content-about {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.image-content-about {
+    flex: 0 0 200px;
+    margin-left: 20px;
+}
+
+h1, h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+li:before {
+    content: "\2022";
+    margin-right: 10px;
+    color: #666;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}

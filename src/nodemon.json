@@ -1,0 +1,6 @@
+{
+    "watch": ["src"],
+    "ext": "ts,html,scss",
+    "exec": "ng serve"
+  }
+  

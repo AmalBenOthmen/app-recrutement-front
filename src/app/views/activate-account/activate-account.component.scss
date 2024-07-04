@@ -1,0 +1,25 @@
+.container-account,
+.container-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; /* Ensure the container takes the full height of the viewport */
+}
+
+.form-container {
+  text-align: center;
+  width: 400px;
+}
+
+.activation-message,
+.activation-error {
+  text-align: center;
+}
+
+
+.activation-error {
+  color: red;
+}
+.activation-message{
+  color:darkgreen;
+}
