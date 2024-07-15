@@ -1,20 +1,15 @@
 import { Component } from '@angular/core';
-import {Router} from "@angular/router";
-import {TokenService} from "../../services/token/token.service";
-
-class StorageService {
-}
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [],
-  templateUrl: './admin.component.html',
+  imports: [
+    FormsModule
+  ],
+  templateUrl: './create-jobPost.component.html',
   styleUrl: './admin.component.scss'
 })
 export class AdminComponent {
-
-
-
 
 }

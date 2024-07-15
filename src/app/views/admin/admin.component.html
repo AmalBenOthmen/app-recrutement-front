@@ -1,1 +1,27 @@
-khjdsjkhj
+<form (ngSubmit)="submitJobPostForm()">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" name="title" [(ngModel)]="jobPost.title" required>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea class="form-control" id="description" name="description" [(ngModel)]="jobPost.description" required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="responsibilities">Responsibilities</label>
+    <textarea class="form-control" id="responsibilities" name="responsibilities" [(ngModel)]="jobPost.responsibilities" required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="requirements">Requirements</label>
+    <textarea class="form-control" id="requirements" name="requirements" [(ngModel)]="jobPost.requirements" required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="skills">Skills</label>
+    <input type="text" class="form-control" id="skills" name="skills" [(ngModel)]="jobPost.skills" required>
+  </div>
+  <div class="form-group">
+    <label for="dateLine">Deadline</label>
+    <input type="date" class="form-control" id="dateLine" name="dateLine" [(ngModel)]="jobPost.dateLine" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
