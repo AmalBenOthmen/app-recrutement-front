@@ -187,7 +187,7 @@ h3 {
 
 /* line 123, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
 .white-bg {
-  background: #ffffff;
+  background: #FFFFFF;
 }
 
 /* line 126, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
@@ -2053,7 +2053,7 @@ h3 {
   top: 0;
   height: 100%;
   content: '';
-  background-image: url(../img/faq/faq.png);
+  background-image: url(assets/user-template/img/faq/faq.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -2242,7 +2242,7 @@ h3 {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  background: #001D38;
+  background: #001D38;!important;
 }
 
 /* line 7, ../../Arafath/CL/December/235. Job board/HTML/scss/_footer.scss */
@@ -2534,7 +2534,7 @@ h3 {
 /* line 1, ../../Arafath/CL/December/235. Job board/HTML/scss/_bradcam.scss */
 .bradcam_bg_1 {
   position: relative; /* Position relative pour le parent */
-  background-image: url(../img/browseJob.jpg);
+  background-image: url(assets/user-template/img/browseJob.jpg);
   background-size: cover; /* Pour s'assurer que l'image couvre tout l'élément */
   background-position: center; /* Centrer l'image */
   max-height: 95px;
@@ -2594,7 +2594,7 @@ h3 {
   text-transform: capitalize;
   margin-right: 200px;
   margin-top: -50px;
-  
+
 }
 
 @media (max-width: 767px) {
@@ -2974,7 +2974,7 @@ h3 {
 
 /* line 27, ../../Arafath/CL/December/235. Job board/HTML/scss/_job.scss */
 .job_searcing_wrap::after {
-  background-image: url(../img/job/1.png);
+  background-image: url(assets/user-template/img/job/1.png);
   width: 50%;
   height: 100%;
   background-repeat: no-repeat;
@@ -3280,7 +3280,7 @@ h3 {
 /* line 1, ../../Arafath/CL/December/235. Job board/HTML/scss/_job_list.scss */
 .job_listing_area {
   background: #F5F7FA;
-  padding-bottom: 80px;
+  padding-bottom:100px;
 }
 
 /* line 4, ../../Arafath/CL/December/235. Job board/HTML/scss/_job_list.scss */
@@ -5477,7 +5477,7 @@ h6 {
 
 /* line 798, ../../Arafath/CL/December/235. Job board/HTML/scss/_elements.scss */
 .primary-checkbox input:checked + label {
-  background: url(../img/elements/primary-check.png) no-repeat center center/cover;
+  background: url(assets/user-template/img/elements/primary-check.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -5519,7 +5519,7 @@ h6 {
 
 /* line 835, ../../Arafath/CL/December/235. Job board/HTML/scss/_elements.scss */
 .confirm-checkbox input:checked + label {
-  background: url(../img/elements/success-check.png) no-repeat center center/cover;
+  background: url(assets/user-template/img/elements/success-check.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -5567,7 +5567,7 @@ h6 {
 
 /* line 876, ../../Arafath/CL/December/235. Job board/HTML/scss/_elements.scss */
 .disabled-checkbox input:checked + label {
-  background: url(../img/elements/disabled-check.png) no-repeat center center/cover;
+  background: url(assets/user-template/img/elements/disabled-check.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -5609,7 +5609,7 @@ h6 {
 
 /* line 913, ../../Arafath/CL/December/235. Job board/HTML/scss/_elements.scss */
 .primary-radio input:checked + label {
-  background: url(../img/elements/primary-radio.png) no-repeat center center/cover;
+  background: url(assets/user-template/img/elements/primary-radio.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -5651,7 +5651,7 @@ h6 {
 
 /* line 950, ../../Arafath/CL/December/235. Job board/HTML/scss/_elements.scss */
 .confirm-radio input:checked + label {
-  background: url(../img/elements/success-radio.png) no-repeat center center/cover;
+  background: url(assets/user-template/img/elements/success-radio.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -5699,7 +5699,7 @@ h6 {
 
 /* line 991, ../../Arafath/CL/December/235. Job board/HTML/scss/_elements.scss */
 .disabled-radio input:checked + label {
-  background: url(../img/elements/disabled-radio.png) no-repeat center center/cover;
+  background: url(assets/user-template/img/elements/disabled-radio.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -7550,7 +7550,7 @@ h6 {
 .header_area {
   background-color: #02034d; /* Blue background color */
   padding: 43px 0; /* Padding for the header */
- 
+
 }
 
 
@@ -7591,7 +7591,7 @@ h6 {
 h1, h2 {
   color: #333;
   margin-bottom: 100px;
-  
+
 }
 p{
   color:#663E10;
@@ -7628,7 +7628,7 @@ p{
   flex-direction: row; /* Par défaut, mais indiqué pour la clarté */
   align-items: center; /* Pour aligner les éléments verticalement au centre */
   margin-top: 100px
-  
+
 }
 
 .global-leader h1 {
@@ -7636,13 +7636,13 @@ p{
   padding: 1px;
   margin: 10px;
   max-width: 450px;
-   
+
 }
 
 .global-leader p {
   flex: 1; /* Pour que le paragraphe prenne autant d'espace que possible */
   padding-left: 1px; /* Espacement entre le h1 et le paragraphe, ajustez selon vos besoins */
- 
+
 }
 
 .our-mission-is {
@@ -7712,7 +7712,7 @@ p{
 container-value p {
   font-size: 1.2em;
   color: #664c3b;
- 
+
 }
 .container-values {
   display: grid;
@@ -7723,7 +7723,7 @@ container-value p {
 }
 
 .container-values > div {
- 
+
   padding: 20px; /* Optionnel : padding à l'intérieur des divs */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optionnel : ajout d'une ombre pour un effet visuel */
 }

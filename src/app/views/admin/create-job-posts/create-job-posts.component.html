@@ -1,1 +1,60 @@
-<p>create-job-posts works!</p>
+
+
+<div class="container-fluid card JobPost-container">
+  <h3 class="text-center">Create a Job Post</h3>
+  <hr>
+
+
+  <form [formGroup]="jobPostForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input id="title" formControlName="title" type="text" class="form-control" placeholder="Title"/>
+      <div *ngIf="jobPostForm.get('title')?.invalid && jobPostForm.get('title')?.touched" class="text-danger">
+        Title is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input id="description" formControlName="description" type="text" class="form-control" placeholder="Description"/>
+      <div *ngIf="jobPostForm.get('description')?.invalid && jobPostForm.get('description')?.touched" class="text-danger">
+        Description is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="responsibilities" class="form-label">Responsibilities</label>
+      <input id="responsibilities" formControlName="responsibilities" type="text" class="form-control" placeholder="Responsibilities"/>
+      <div *ngIf="jobPostForm.get('responsibilities')?.invalid && jobPostForm.get('responsibilities')?.touched" class="text-danger">
+        Responsibilities are required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="requirementsANDskills" class="form-label">Requirements and Skills</label>
+      <input id="requirementsANDskills" formControlName="requirementsANDskills" type="text" class="form-control" placeholder="Requirements and Skills"/>
+      <div *ngIf="jobPostForm.get('requirementsANDskills')?.invalid && jobPostForm.get('requirementsANDskills')?.touched" class="text-danger">
+        Requirements and skills are required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="dateLine" class="form-label">Deadline</label>
+      <input id="dateLine" formControlName="dateLine" type="datetime-local" class="form-control"/>
+      <div *ngIf="jobPostForm.get('dateLine')?.invalid && jobPostForm.get('dateLine')?.touched" class="text-danger">
+        Deadline is required.
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between mb-3" >
+      <button type="submit" class="btn btn-primary">
+        <em class="fas fa-save">&nbsp;Save Job Post</em>
+      </button>
+      <div>
+        <button (click)="goToJobPosts()" type="button" class="btn btn-link">
+          View Job Posts
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

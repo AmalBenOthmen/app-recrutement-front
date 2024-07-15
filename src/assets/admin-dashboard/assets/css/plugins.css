@@ -6185,8 +6185,8 @@ div.table-responsive > div.dataTables_wrapper > div.row {
   font-style: normal;
   font-weight: 400;
   font-display: auto;
-  src: url(app/Layouts/admin-template-layout/assets/fonts/summernote/summernote.eot);
-  src: url(app/Layouts/admin-template-layout/assets/fonts/summernote/summernote.eot?#iefix) format("embedded-opentype"), url(app/Layouts/admin-template-layout/assets/fonts/summernote/summernote.woff2) format("woff2"), url(app/Layouts/admin-template-layout/assets/fonts/summernote/summernote.woff) format("woff"), url(app/Layouts/admin-template-layout/assets/fonts/summernote/summernote.ttf) format("truetype"); }
+  src: url(../fonts/summernote/summernote.eot);
+  src: url(../fonts/summernote/summernote.eot?#iefix) format("embedded-opentype"), url(../fonts/summernote/summernote.woff2) format("woff2"), url(../fonts/summernote/summernote.woff) format("woff"), url(../fonts/summernote/summernote.ttf) format("truetype"); }
 [class*=" note-icon"]:before, [class^=note-icon]:before {
   display: inline-block;
   font-family: summernote;

@@ -1,0 +1,66 @@
+.input_field,
+.input_field1,
+.input-group,
+.input-group-prepend {
+  margin-bottom: 20px;
+}
+
+.input_field input,
+.input_field1 select,
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: transparent; /* Garantit qu'il n'y a pas d'arrière-plan */
+  color: #333; /* Couleur du texte */
+}
+
+.input-group .custom-file-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: transparent; /* Garantit qu'il n'y a pas d'arrière-plan */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  color: #333; /* Couleur du texte */
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: transparent; /* Garantit qu'il n'y a pas d'arrière-plan */
+  color: #333; /* Couleur du texte */
+}
+
+.wide1 {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: transparent; /* Garantit qu'il n'y a pas d'arrière-plan */
+  color: #333; /* Couleur du texte */
+}
+
+.submit_btn button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit_btn button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.submit_btn button:hover {
+  background-color: #45a049;
+}

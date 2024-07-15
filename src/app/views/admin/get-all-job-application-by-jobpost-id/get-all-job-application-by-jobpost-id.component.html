@@ -1,0 +1,22 @@
+<div class="job-applications">
+  <h2>Job Applications for Job Post #{{ jobPostId }}</h2>
+  <div *ngIf="jobApplications.length > 0; else noApplications">
+    <div *ngFor="let application of jobApplications" class="job-application">
+      <h3>{{ application.firstName }} {{ application.lastName }}</h3>
+      <p>Gender: {{ application.gender }}</p>
+      <p>Age: {{ application.age }}</p>
+      <p>Address: {{ application.address }}</p>
+      <p>Phone Number: {{ application.phoneNumber }}</p>
+      <p>Email: {{ application.email }}</p>
+      <p>Education Level: {{ application.educationLevel }}</p>
+      <p>Speciality: {{ application.speciality }}</p>
+      <p>LinkedIn: <a [href]="application.linkedinLink" target="_blank">{{ application.linkedinLink }}</a></p>
+      <p>Cover Letter: {{ application.coverLetter }}</p>
+      <a [href]="application.cvPath" target="_blank">View CV</a>
+      <a *ngIf="application.additionalDocumentsPath" [href]="application.additionalDocumentsPath" target="_blank">View Additional Documents</a>
+    </div>
+  </div>
+  <ng-template #noApplications>
+    <p>No applications found for this job post.</p>
+  </ng-template>
+</div>

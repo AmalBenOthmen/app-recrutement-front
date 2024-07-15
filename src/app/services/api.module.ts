@@ -4,6 +4,7 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
+import { JobPostService } from './services/job-post.service';
 import { AuthenticationService } from './services/authentication.service';
 
 /**
@@ -14,6 +15,7 @@ import { AuthenticationService } from './services/authentication.service';
   exports: [],
   declarations: [],
   providers: [
+    JobPostService,
     AuthenticationService,
     ApiConfiguration
   ],

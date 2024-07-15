@@ -11,8 +11,18 @@ import { MissionValueComponent } from './Layouts/template-layouts/Our Mission & 
 import { LoginComponent } from "./views/login/login.component";
 import { RegisterComponent } from "./views/register/register.component";
 import { ActivateAccountComponent } from "./views/activate-account/activate-account.component";
-import { authGuard } from "./services/services/auth.guard";
-import { AdminComponent } from "./views/admin/admin.component";
+
+
+
+import {AdminDashboardComponent} from "./Layouts/admin-template-layout/admin-dashboard/admin-dashboard.component";
+
+import {CreateJobPostsComponent} from "./views/admin/create-job-posts/create-job-posts.component";
+import {authGuard} from "./auth.guard";
+import {JobApplicationComponent} from "./views/user/job-application/job-application.component";
+import {GetAllJobPostsComponent} from "./views/admin/get-all-job-posts/get-all-job-posts.component";
+import {
+  GetAllJobApplicationByJobpostIdComponent
+} from "./views/admin/get-all-job-application-by-jobpost-id/get-all-job-application-by-jobpost-id.component";
 
 
 export const routes: Routes = [
@@ -25,23 +35,30 @@ export const routes: Routes = [
       { path: 'activate-account', component: ActivateAccountComponent },
       { path: '', component: HomeComponent },
       { path: 'browseJob', component: BrowseJobComponent, canActivate: [authGuard] },
-      { path: 'job-details', component: JobDetailsComponent, canActivate: [authGuard] },
+      { path: 'job-details/:id', component: JobDetailsComponent, canActivate: [authGuard] },
       { path: 'contact', component: ContactComponent },
       { path: 'job-statistics', component: StatisticsComponent, canActivate: [authGuard] },
       { path: 'about-coficab-group', component: AboutUsComponent },
       { path: 'mission-value', component: MissionValueComponent },
-      { path: 'vision-strategy', component: MissionValueComponent }
+      { path: 'vision-strategy', component: MissionValueComponent },
+      {path:'jobApplicationForm', component: JobApplicationComponent}
     ]
   },
   {
     path: 'admin',
-    component: AdminComponent,
+    component: AdminDashboardComponent,
     canActivate: [authGuard],
     children: [
+      { path: 'create-jobPosts', component: CreateJobPostsComponent},
+      {path:'get-all-jobPosts',component: GetAllJobPostsComponent},
+      { path: 'get-all-jobApplicationForm-by-jobPost/:id', component: GetAllJobApplicationByJobpostIdComponent }
+ ] }
 
 
-    ]
-  }
+
+
+
+
 ];
 
 @NgModule({

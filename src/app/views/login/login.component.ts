@@ -1,23 +1,29 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import { AuthenticationRequest } from '../../services/models/authentication-request';
 import { AuthenticationService } from '../../services/services/authentication.service';
-import { TokenService } from '../../services/token/token.service';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
+import {FormsModule} from "@angular/forms";
+import {CommonModule, NgForOf, NgIf} from "@angular/common";
+import {TokenService} from "../../services/token/token.service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule],
-  styleUrls: ['./login.component.scss'],
-  providers: [AuthenticationService]
+  imports: [
+    FormsModule,
+    NgForOf,
+    NgIf,
+    CommonModule,
+    RouterModule
+  ],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   authRequest: AuthenticationRequest = { email: '', password: '' };
   errorMsg: string = '';
-  isLoggedIn: boolean = false; // Définir la variable ici
+  isLoggedIn: boolean = false;
 
   constructor(
     private router: Router,
@@ -30,12 +36,18 @@ export class LoginComponent {
     this.authService.authenticate({ body: this.authRequest }).subscribe({
       next: (res) => {
         if (res.token && res.role) {
-          this.tokenService.token = res.token;
-          this.isLoggedIn = true; // Mise à jour de l'état de connexion
-          const role = res.role;
-          console.log(role);
+          console.log('Token received:', res.token);
+          console.log('Role received:', res.role);
 
-          if (role === 'ADMIN') {
+          // Store token
+          this.tokenService.token = res.token;
+
+          // Store role (if needed)
+          // this.tokenService.role = res.role;
+
+          this.isLoggedIn = true;
+
+          if (res.role === 'ADMIN') {
             this.router.navigate(['/admin']);
           } else {
             this.router.navigate(['/contact']);
@@ -56,8 +68,8 @@ export class LoginComponent {
   }
 
   logout(): void {
-    this.tokenService.token = '';
-    this.isLoggedIn = false; // Mise à jour de l'état de connexion
+    this.tokenService.signOut();
+    this.isLoggedIn = false;
     this.router.navigate(['/']);
   }
 

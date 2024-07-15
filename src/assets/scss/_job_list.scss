@@ -42,7 +42,7 @@
 
                     }
                 }
-                
+
                 .jobs_conetent{
                     float: left;
                     h4{
@@ -126,7 +126,7 @@
         }
     }
 
-    // job_filter 
+    // job_filter
     .job_filter{
         padding: 25px;
         display: block;
@@ -149,12 +149,12 @@
                         color: #7A838B;
                         font-size: 16px;
                         font-weight: 400;
-    
+
                     }
                     &:focus{
                         outline: none;
                     }
-    
+
                 }
                 .nice-select{
                     width: 100%;
@@ -169,7 +169,7 @@
                     &:focus{
                         outline: none;
                     }
-    
+
                 }
             }
             .nice-select{
@@ -210,7 +210,7 @@
         // @include flexbox();
         // @include justify-content(end);
         @media #{$mobile_device} {
-           display: block !important; 
+           display: block !important;
         }
     }
     .nice-select {
@@ -219,6 +219,6 @@
         line-height: 50px;
         color:#7A838B;
         font-size: 16px;
-    
+
     }
 }

@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-import {HttpClient, HttpContext} from '@angular/common/http';
+import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -17,10 +17,9 @@ import { Confirm$Params } from '../fn/authentication/confirm';
 import { register } from '../fn/authentication/register';
 import { Register$Params } from '../fn/authentication/register';
 
-@Injectable
-({ providedIn: 'root' })
+@Injectable({ providedIn: 'root' })
 export class AuthenticationService extends BaseService {
-  constructor(config: ApiConfiguration,  http:HttpClient) {
+  constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
   }
 
@@ -34,7 +33,7 @@ export class AuthenticationService extends BaseService {
    * This method sends `application/json` and handles request body of type `application/json`.
    */
   register$Response(params: Register$Params, context?: HttpContext): Observable<StrictHttpResponse<{
-  }>> {
+}>> {
     return register(this.http, this.rootUrl, params, context);
   }
 
@@ -45,30 +44,36 @@ export class AuthenticationService extends BaseService {
    * This method sends `application/json` and handles request body of type `application/json`.
    */
   register(params: Register$Params, context?: HttpContext): Observable<{
-  }> {
+}> {
     return this.register$Response(params, context).pipe(
       map((r: StrictHttpResponse<{
-      }>): {
-      } => r.body)
+}>): {
+} => r.body)
     );
   }
 
+  /** Path part for operation `authenticate()` */
   static readonly AuthenticatePath = '/auth/authenticate';
 
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `authenticate()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
   authenticate$Response(params: Authenticate$Params, context?: HttpContext): Observable<StrictHttpResponse<AuthenticationResponse>> {
     return authenticate(this.http, this.rootUrl, params, context);
   }
 
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `authenticate$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
   authenticate(params: Authenticate$Params, context?: HttpContext): Observable<AuthenticationResponse> {
     return this.authenticate$Response(params, context).pipe(
-      map((response: StrictHttpResponse<AuthenticationResponse>) => {
-        const authenticatedUser = response.body;
-        if (authenticatedUser && authenticatedUser.role) {
-          // You can also store the role in local storage if needed
-          localStorage.setItem('userRole', authenticatedUser.role);
-        }
-        return authenticatedUser;
-      })
+      map((r: StrictHttpResponse<AuthenticationResponse>): AuthenticationResponse => r.body)
     );
   }
 
@@ -96,6 +101,5 @@ export class AuthenticationService extends BaseService {
       map((r: StrictHttpResponse<void>): void => r.body)
     );
   }
-
 
 }
