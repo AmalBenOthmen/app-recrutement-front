@@ -12,8 +12,8 @@
       <p>Speciality: {{ application.speciality }}</p>
       <p>LinkedIn: <a [href]="application.linkedinLink" target="_blank">{{ application.linkedinLink }}</a></p>
       <p>Cover Letter: {{ application.coverLetter }}</p>
-      <a [href]="application.cvPath" target="_blank">View CV</a>
-      <a *ngIf="application.additionalDocumentsPath" [href]="application.additionalDocumentsPath" target="_blank">View Additional Documents</a>
+      <button (click)="downloadCV(application.cvPath)">View CV</button>
+      <button *ngIf="application.additionalDocumentsPath" (click)="downloadAdditionalDocuments(application.additionalDocumentsPath)">View Additional Documents</button>
     </div>
   </div>
   <ng-template #noApplications>

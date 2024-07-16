@@ -43,4 +43,24 @@ export class JobPostService {
       })
     );
   }
+  downloadCV(fileName: string): Observable<Blob> {
+    const url = `${this.apiUrl}/cv/${fileName}`;
+    return this.http.get(url, { headers: this.getAuthHeaders(), responseType: 'blob' }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error downloading CV:', error);
+        return throwError(error);
+      })
+    );
+  }
+
+  downloadAdditionalDocuments(fileName: string): Observable<Blob> {
+    const url = `${this.apiUrl}/additionalDocuments/${fileName}`;
+    return this.http.get(url, { headers: this.getAuthHeaders(), responseType: 'blob' }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error downloading additional documents:', error);
+        return throwError(error);
+      })
+    );
+  }
 }
+

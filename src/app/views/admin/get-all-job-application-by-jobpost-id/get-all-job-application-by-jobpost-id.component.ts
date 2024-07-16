@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { JobApplicationService } from '../../../services/services/JobApplicationService';
+
 import { JobApplicationFormResponse } from '../../../services/models/JobApplicationFormResponse';
 import { JobPostService } from "../../../services/services/job-post.service";
 import { TokenService } from "../../../services/token/token.service";
-import {NgForOf, NgIf} from "@angular/common"; // Adjust path as per your project structure
+import { NgForOf, NgIf } from "@angular/common";
+import { saveAs } from 'file-saver'; // Import file-saver
 
 @Component({
   selector: 'app-get-all-job-application-by-jobpost-id',
@@ -24,7 +25,7 @@ export class GetAllJobApplicationByJobpostIdComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private jobPostService: JobPostService,
-    private tokenService: TokenService // Inject TokenService for role checking
+    private tokenService: TokenService, // Inject TokenService for role checking
   ) {}
 
   ngOnInit(): void {
@@ -62,5 +63,25 @@ export class GetAllJobApplicationByJobpostIdComponent implements OnInit {
     );
   }
 
-}
+  downloadCV(fileName: string): void {
+    this.jobPostService.downloadCV(fileName).subscribe(
+      (blob: Blob) => {
+        saveAs(blob, fileName);
+      },
+      error => {
+        console.error('Error downloading CV:', error);
+      }
+    );
+  }
 
+  downloadAdditionalDocuments(fileName: string): void {
+    this.jobPostService.downloadAdditionalDocuments(fileName).subscribe(
+      (blob: Blob) => {
+        saveAs(blob, fileName);
+      },
+      error => {
+        console.error('Error downloading additional documents:', error);
+      }
+    );
+  }
+}
