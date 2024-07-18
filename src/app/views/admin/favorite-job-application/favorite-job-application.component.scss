@@ -1,0 +1,13 @@
+/* src/app/components/favorite-job-application/favorite-job-application.component.scss */
+
+.favorite-job-application {
+  .fa-heart {
+    font-size: 24px;
+    cursor: pointer;
+    color: grey;
+  }
+
+  .fa-heart.favorite {
+    color: red;
+  }
+}

@@ -1,11 +1,16 @@
+// src/app/components/get-all-job-application-by-jobpost-id/get-all-job-application-by-jobpost-id.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { JobApplicationFormResponse } from '../../../services/models/JobApplicationFormResponse';
 import { JobPostService } from "../../../services/services/job-post.service";
 import { TokenService } from "../../../services/token/token.service";
-import { NgForOf, NgIf } from "@angular/common";
+
 import { saveAs } from 'file-saver'; // Import file-saver
+import { NgForOf, NgIf } from "@angular/common";
+import {FavoriteJobApplicationFormListService} from "../../../services/services/FavoriteJobApplicationFormListService";
+import {FavoriteJobApplicationComponent} from "../favorite-job-application/favorite-job-application.component";
 
 @Component({
   selector: 'app-get-all-job-application-by-jobpost-id',
@@ -13,7 +18,8 @@ import { saveAs } from 'file-saver'; // Import file-saver
   standalone: true,
   imports: [
     NgForOf,
-    NgIf
+    NgIf,
+    FavoriteJobApplicationComponent
   ],
   styleUrls: ['./get-all-job-application-by-jobpost-id.component.scss']
 })
@@ -21,11 +27,13 @@ export class GetAllJobApplicationByJobpostIdComponent implements OnInit {
   jobPostId!: number;
   jobApplications: JobApplicationFormResponse[] = [];
   isAdmin: boolean = false; // Track admin status
+  userEmail: string |  null = null ; // User ID of the admin
 
   constructor(
     private route: ActivatedRoute,
     private jobPostService: JobPostService,
     private tokenService: TokenService, // Inject TokenService for role checking
+    private favoriteJobApplicationFormListService: FavoriteJobApplicationFormListService // Inject FavoriteJobApplicationFormListService
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +41,8 @@ export class GetAllJobApplicationByJobpostIdComponent implements OnInit {
       this.jobPostId = +params.get('id')!; // Ensure correct parameter name from route
       this.checkAdminStatus(); // Check if user is admin
     });
+
+    this.userEmail = this.tokenService.getUserEmail(); // Get the user ID from the token
   }
 
   checkAdminStatus(): void {

@@ -1,0 +1,11 @@
+<!-- src/app/components/favorite-job-application/favorite-job-application.component.html -->
+
+<div class="favorite-job-application">
+  <i
+    class="fa-heart"
+    [class.far]="!isFavorite"
+    [class.fas]="isFavorite"
+    (click)="toggleFavorite()"
+    [ngClass]="{'favorite': isFavorite}"
+  ></i>
+</div>

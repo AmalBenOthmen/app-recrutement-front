@@ -13,6 +13,9 @@ import { HttpTokenInterceptor } from "./interceptor/http-token.interceptor";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CreateJobPostsComponent } from "./views/admin/create-job-posts/create-job-posts.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {
+  FavoriteJobApplicationComponent
+} from "./views/admin/favorite-job-application/favorite-job-application.component";
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     JobDetailsComponent,
     CreateJobPostsComponent,
     LoginComponent,
-    NgbModule
+    NgbModule,
+    FavoriteJobApplicationComponent
   ],
   providers: [
     {

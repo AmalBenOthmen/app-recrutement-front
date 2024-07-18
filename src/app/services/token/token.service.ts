@@ -46,6 +46,15 @@ export class TokenService {
     }
     return [];
   }
+  getUserEmail(): string | null {
+    const token = this.token;
+    if (token) {
+      const jwtHelper = new JwtHelperService();
+      const decodedToken = jwtHelper.decodeToken(token);
+      return decodedToken.sub; // Assuming sub contains the user ID
+    }
+    return null;
+  }
 
   signOut() {
     // Implement sign out logic if needed

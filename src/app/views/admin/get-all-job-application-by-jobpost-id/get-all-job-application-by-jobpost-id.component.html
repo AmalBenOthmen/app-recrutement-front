@@ -1,7 +1,10 @@
+<!-- src/app/components/get-all-job-application-by-jobpost-id/get-all-job-application-by-jobpost-id.component.html -->
+
 <div class="job-applications">
   <h2>Job Applications for Job Post #{{ jobPostId }}</h2>
   <div *ngIf="jobApplications.length > 0; else noApplications">
     <div *ngFor="let application of jobApplications" class="job-application">
+      <app-favorite-job-application [jobApplicationFormId]="application.id" [userEmail]="userEmail!"></app-favorite-job-application>
       <h3>{{ application.firstName }} {{ application.lastName }}</h3>
       <p>Gender: {{ application.gender }}</p>
       <p>Age: {{ application.age }}</p>

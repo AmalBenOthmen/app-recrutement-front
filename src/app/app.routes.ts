@@ -23,6 +23,9 @@ import {GetAllJobPostsComponent} from "./views/admin/get-all-job-posts/get-all-j
 import {
   GetAllJobApplicationByJobpostIdComponent
 } from "./views/admin/get-all-job-application-by-jobpost-id/get-all-job-application-by-jobpost-id.component";
+import {
+  FavoriteJobApplicationListComponent
+} from "./views/admin/favorite-job-application-list/favorite-job-application-list.component";
 
 
 export const routes: Routes = [
@@ -51,7 +54,8 @@ export const routes: Routes = [
     children: [
       { path: 'create-jobPosts', component: CreateJobPostsComponent},
       {path:'get-all-jobPosts',component: GetAllJobPostsComponent},
-      { path: 'get-all-jobApplicationForm-by-jobPost/:id', component: GetAllJobApplicationByJobpostIdComponent }
+      { path: 'get-all-jobApplicationForm-by-jobPost/:id', component: GetAllJobApplicationByJobpostIdComponent },
+      {path:'get-Favorite-jobAPP-list',component: FavoriteJobApplicationListComponent}
  ] }
 
 

@@ -1,0 +1,22 @@
+<div *ngIf="wishlistEntries">
+  <h2>Wishlist Entries</h2>
+  <ul>
+    <li *ngFor="let entry of wishlistEntries">
+      <div class="job-application">
+        <!-- Display job application details -->
+        <h3>{{ entry.jobApplicationForm.firstName }} {{ entry.jobApplicationForm.lastName }}</h3>
+        <p>Gender: {{ entry.jobApplicationForm.gender }}</p>
+        <p>Age: {{ entry.jobApplicationForm.age }}</p>
+        <p>Address: {{ entry.jobApplicationForm.address }}</p>
+        <p>Phone Number: {{ entry.jobApplicationForm.phoneNumber }}</p>
+        <p>Email: {{ entry.jobApplicationForm.email }}</p>
+        <p>Education Level: {{ entry.jobApplicationForm.educationLevel }}</p>
+        <p>Speciality: {{ entry.jobApplicationForm.speciality }}</p>
+        <p>LinkedIn: <a [href]="entry.jobApplicationForm.linkedinLink" target="_blank">{{ entry.jobApplicationForm.linkedinLink }}</a></p>
+        <p>Cover Letter: {{ entry.jobApplicationForm.coverLetter }}</p>
+        <button (click)="downloadCV(entry.jobApplicationForm.cvPath)">View CV</button>
+        <button *ngIf="entry.jobApplicationForm.additionalDocumentsPath" (click)="downloadAdditionalDocuments(entry.jobApplicationForm.additionalDocumentsPath)">View Additional Documents</button>
+      </div>
+    </li>
+  </ul>
+</div>
