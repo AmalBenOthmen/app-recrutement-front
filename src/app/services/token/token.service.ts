@@ -46,6 +46,9 @@ export class TokenService {
     }
     return [];
   }
+  public getToken(): string | null {
+    return localStorage.getItem('token');
+  }
   getUserEmail(): string | null {
     const token = this.token;
     if (token) {
