@@ -1,0 +1,25 @@
+<!-- src/app/components/messages-received/messages-received.component.html -->
+<div class="global-container">
+  <div class="container">
+    <h2>Messages Received</h2>
+    <div *ngIf="messages.length > 0; else noMessages">
+      <div *ngFor="let message of messages" class="message-item">
+        <div class="message-header" (click)="toggleMessageVisibility(message.id ?? 0)">
+          <div class="message-info">
+            <strong>{{ message.name }}</strong>
+          </div>
+          <p class="message-preview">{{ message.message | slice:0:60 }}...</p>
+        </div>
+        <div *ngIf="selectedMessageId === (message.id ?? 0)" class="message-content">
+          <p>{{ message.message }}</p>
+          <p><strong>Email:</strong> {{ message.email }}</p>
+        </div>
+        <!-- Separate each message with a horizontal line -->
+        <hr class="message-divider">
+      </div>
+    </div>
+    <ng-template #noMessages>
+      <p>No messages received.</p>
+    </ng-template>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { TokenService } from '../token/token.service'; // Adjust path based on your project structure
 
 @Injectable({
@@ -27,5 +27,23 @@ export class MessageService {
     });
 
     return this.http.get(`${this.apiUrl}/messages/unread`, { headers });
+  }
+
+  markMessageAsRead(id: number): Observable<void> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.tokenService.getToken()}`
+    });
+
+    return this.http.put<void>(`${this.apiUrl}/messages/${id}/read`, {}, { headers })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  // Handle errors
+  private handleError(error: any) {
+    console.error('An error occurred', error);
+    return throwError(() => new Error('Something went wrong; please try again later.'));
   }
 }

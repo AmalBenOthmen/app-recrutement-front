@@ -26,6 +26,7 @@ import {
 import {
   FavoriteJobApplicationListComponent
 } from "./views/admin/favorite-job-application-list/favorite-job-application-list.component";
+import {MessagesReceivedComponent} from "./views/admin/messages-received/messages-received.component";
 
 
 export const routes: Routes = [
@@ -55,7 +56,8 @@ export const routes: Routes = [
       { path: 'create-jobPosts', component: CreateJobPostsComponent},
       {path:'get-all-jobPosts',component: GetAllJobPostsComponent},
       { path: 'get-all-jobApplicationForm-by-jobPost/:id', component: GetAllJobApplicationByJobpostIdComponent },
-      {path:'get-Favorite-jobAPP-list',component: FavoriteJobApplicationListComponent}
+      {path:'get-Favorite-jobAPP-list',component: FavoriteJobApplicationListComponent},
+      { path: 'messages-received', component: MessagesReceivedComponent }
  ] }
 
 
