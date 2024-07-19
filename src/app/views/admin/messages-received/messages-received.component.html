@@ -1,20 +1,24 @@
-<!-- src/app/components/messages-received/messages-received.component.html -->
 <div class="global-container">
   <div class="container">
     <h2>Messages Received</h2>
     <div *ngIf="messages.length > 0; else noMessages">
-      <div *ngFor="let message of messages" class="message-item">
-        <div class="message-header" (click)="toggleMessageVisibility(message.id ?? 0)">
+      <div *ngFor="let message of messages"
+           [ngClass]="{'message-unread': !message.read, 'message-read': message.read}"
+           class="message-item"
+           (click)="toggleMessageVisibility(message)">
+        <div class="message-header">
           <div class="message-info">
             <strong>{{ message.name }}</strong>
           </div>
-          <p class="message-preview">{{ message.message | slice:0:60 }}...</p>
+          <div class="message-date">
+            <span>{{ message.sentDate | date: 'short' }}</span>
+            <span *ngIf="message.read" class="tick-mark">✔️</span> <!-- Tick mark for read messages -->
+          </div>
         </div>
-        <div *ngIf="selectedMessageId === (message.id ?? 0)" class="message-content">
+        <div *ngIf="selectedMessageId === message.id" class="message-content">
           <p>{{ message.message }}</p>
           <p><strong>Email:</strong> {{ message.email }}</p>
         </div>
-        <!-- Separate each message with a horizontal line -->
         <hr class="message-divider">
       </div>
     </div>

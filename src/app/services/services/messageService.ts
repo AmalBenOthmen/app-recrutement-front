@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
-import { TokenService } from '../token/token.service'; // Adjust path based on your project structure
+import { Observable } from 'rxjs';
+import { TokenService } from '../token/token.service';
+import { Message } from '../models/message'; // Adjust path based on your project structure
 
 @Injectable({
   providedIn: 'root'
@@ -9,41 +10,37 @@ import { TokenService } from '../token/token.service'; // Adjust path based on y
 export class MessageService {
   private apiUrl = 'http://localhost:8089/api/v1'; // Replace with your backend base URL
 
-  constructor(private http: HttpClient, private tokenService: TokenService) { }
+  constructor(private http: HttpClient, private tokenService: TokenService) {}
 
-  saveMessage(message: any): Observable<any> {
+  saveMessage(message: Message): Observable<Message> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.tokenService.getToken()}`
     });
-
-    return this.http.post(`${this.apiUrl}/messages/send`, message, { headers });
+    return this.http.post<Message>(`${this.apiUrl}/messages/send`, message, { headers });
   }
 
-  getUnreadMessages(): Observable<any> {
+  getUnreadMessages(): Observable<Message[]> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.tokenService.getToken()}`
     });
-
-    return this.http.get(`${this.apiUrl}/messages/unread`, { headers });
+    return this.http.get<Message[]>(`${this.apiUrl}/messages/unread`, { headers });
   }
 
-  markMessageAsRead(id: number): Observable<void> {
+  markAsRead(id: number): Observable<Message> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.tokenService.getToken()}`
     });
-
-    return this.http.put<void>(`${this.apiUrl}/messages/${id}/read`, {}, { headers })
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.http.put<Message>(`${this.apiUrl}/messages/read/${id}`, {}, { headers });
   }
 
-  // Handle errors
-  private handleError(error: any) {
-    console.error('An error occurred', error);
-    return throwError(() => new Error('Something went wrong; please try again later.'));
+  getAllMessages(): Observable<Message[]> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.tokenService.getToken()}`
+    });
+    return this.http.get<Message[]>(`${this.apiUrl}/messages/all`, { headers });
   }
 }

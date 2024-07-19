@@ -1,18 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {MessageService} from "../../../services/services/messageService";
-import {NgForOf, NgIf, SlicePipe} from "@angular/common";
-import {Message} from "../../../services/models/message";
+import { Component, OnInit } from '@angular/core';
+import { MessageService } from '../../../services/services/messageService';
+import { DatePipe, NgClass, NgForOf, NgIf, SlicePipe } from '@angular/common';
+import { Message } from '../../../services/models/message';
 
 @Component({
   selector: 'app-messages-received',
   standalone: true,
-  imports: [
-    NgIf,
-    NgForOf,
-    SlicePipe
-  ],
+  imports: [NgIf, NgForOf, SlicePipe, NgClass, DatePipe],
   templateUrl: './messages-received.component.html',
-  styleUrl: './messages-received.component.scss'
+  styleUrls: ['./messages-received.component.scss']
 })
 export class MessagesReceivedComponent implements OnInit {
   messages: Message[] = [];
@@ -25,9 +21,14 @@ export class MessagesReceivedComponent implements OnInit {
   }
 
   loadMessages() {
-    this.messageService.getUnreadMessages().subscribe(
-      (response: Message[]) => {
-        this.messages = response.reverse();
+    this.messageService.getAllMessages().subscribe(
+      (response: Message[] | undefined) => {
+        if (response) {
+          this.messages = response.reverse(); // Ensure messages are defined
+          console.log('Fetched messages:', this.messages); // Log the fetched messages
+        } else {
+          console.error('No messages found.');
+        }
       },
       error => {
         console.error('Error fetching messages:', error);
@@ -35,7 +36,23 @@ export class MessagesReceivedComponent implements OnInit {
     );
   }
 
-  toggleMessageVisibility(messageId: number) {
-    this.selectedMessageId = this.selectedMessageId === messageId ? null : messageId;
+  toggleMessageVisibility(message: Message) {
+    if (message.id !== undefined) {
+      this.selectedMessageId = this.selectedMessageId === message.id ? null : message.id;
+
+      if (!message.read) {
+        this.messageService.markAsRead(message.id).subscribe(
+          () => {
+            message.read = true; // Update local state
+            console.log('Message marked as read:', message); // Debugging statement
+          },
+          error => {
+            console.error('Error marking message as read:', error);
+          }
+        );
+      }
+    } else {
+      console.error('Message ID is undefined');
+    }
   }
 }
