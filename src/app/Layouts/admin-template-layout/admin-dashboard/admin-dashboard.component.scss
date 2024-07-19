@@ -1,0 +1,19 @@
+.tick-mark {
+  margin-left: 10px;
+  color: green; /* Color for the tick mark */
+}
+.nav-item {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -5px; /* Adjust as needed */
+  right: -10px; /* Adjust as needed */
+  padding: 5px 10px;
+  border-radius: 100%;
+  background-color: #d71818;
+  color: white;
+  font-size: 9px;
+  z-index: 1; /* Ensure the badge is in front */
+}
