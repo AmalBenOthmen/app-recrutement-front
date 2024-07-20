@@ -62,5 +62,13 @@ export class JobPostService {
       })
     );
   }
+  getJobPostsCountByTitle(): Observable<any> {
+    const url = `${this.apiUrl}/count-by-title`;
+    return this.http.get<any>(url, { headers: this.getAuthHeaders() }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error fetching job posts count by title:', error);
+        return throwError(error);
+      })
+    );
+  }
 }
-

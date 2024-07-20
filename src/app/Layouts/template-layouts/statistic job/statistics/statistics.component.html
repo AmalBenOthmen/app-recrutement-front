@@ -3,67 +3,24 @@
   <header class="header_area">
     <div class="container">
         <div class="row align-items-center">
-           
+
         </div>
     </div>
 </header>
 <!-- Header End -->
 <!-- popular_catagory_area_start  -->
-<div class="popular_catagory_area">
+  <div class="popular_catagory_area">
     <div class="container">
-        
-        <div class="row">
-            <div class="col-lg-4 col-xl-3 col-md-6">
-                <div class="single_catagory">
-                    <a href="jobs.html"><h4>operator</h4></a>
-                    <p> <span>50</span> Available position</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-xl-3 col-md-6">
-                <div class="single_catagory">
-                    <a href="jobs.html"><h4>technician</h4></a>
-                    <p> <span>50</span> Available position</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-xl-3 col-md-6">
-                <div class="single_catagory">
-                    <a href="jobs.html"><h4>technician</h4></a>
-                    <p> <span>50</span> Available position</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-xl-3 col-md-6">
-                <div class="single_catagory">
-                    <a href="jobs.html"><h4>Software & Web</h4></a>
-                    <p> <span>50</span> Available position</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-xl-3 col-md-6">
-                <div class="single_catagory">
-                    <a href="jobs.html"><h4>Administration</h4></a>
-                    <p> <span>50</span> Available position</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-xl-3 col-md-6">
-                <div class="single_catagory">
-                    <a href="jobs.html"><h4>operator</h4></a>
-                    <p> <span>50</span> Available position</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-xl-3 col-md-6">
-                <div class="single_catagory">
-                    <a href="jobs.html"><h4>Engineering</h4></a>
-                    <p> <span>50</span> Available position</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-xl-3 col-md-6">
-                <div class="single_catagory">
-                    <a href="jobs.html"><h4>Security agent</h4></a>
-                    <p> <span>50</span> Available position</p>
-                </div>
-            </div>
+      <div class="row">
+        <div *ngFor="let job of jobPosts" class="col-lg-4 col-xl-3 col-md-6">
+          <div class="single_catagory">
+            <h4>{{ job[0] }}</h4>
+            <p> <span>{{ job[1] }}</span> Available position</p>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 <!-- popular_catagory_area_end  -->
 
 </body>
