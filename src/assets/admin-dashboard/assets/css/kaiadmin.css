@@ -340,9 +340,11 @@ body {
 #search-nav {
   flex: 1;
   max-width: 300px;
+
   transition: all .4s; }
   #search-nav.focus {
-    max-width: 400px; }
+    max-width: 400px;
+  }
 
 .main-panel {
   position: relative;
@@ -357,7 +359,7 @@ body {
     overflow: hidden;
     width: 100%;
     max-width: unset;
-    padding: 0 !important; }
+    padding:0!important; }
   .main-panel > .container-full {
     padding: 0px !important;
     min-height: calc(100% - 123px);
@@ -3138,7 +3140,8 @@ label.error {
     justify-content: center;
     padding: unset;
     height: 44px;
-    width: 44px; }
+    width: 44px;
+  }
 .navbar .navbar-nav .topbar-user .profile-pic {
   display: flex;
   align-items: center;
