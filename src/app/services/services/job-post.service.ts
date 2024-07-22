@@ -71,4 +71,12 @@ export class JobPostService {
       })
     );
   }
+  getJobPostsByTitle(title: string): Observable<JobPostResponse[]> {
+    return this.http.get<JobPostResponse[]>(`${this.apiUrl}/jobPost/${title}`, { headers: this.getAuthHeaders() }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error fetching job posts by title:', error);
+        return throwError(error);
+      })
+    );
+  }
 }

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import {Component, OnInit} from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import {JobPostService} from "../../../../services/services/job-post.service";
 
 @Component({
@@ -14,7 +14,8 @@ export class StatisticsComponent implements OnInit {
 
   jobPosts: any[] = [];
 
-  constructor(private jobPostService: JobPostService) { }
+
+  constructor(private jobPostService: JobPostService, private router: Router) { }
 
   ngOnInit(): void {
     this.jobPostService.getJobPostsCountByTitle().subscribe({
@@ -26,4 +27,8 @@ export class StatisticsComponent implements OnInit {
       }
     });
   }
+  searchByTitle(title: string): void {
+    this.router.navigate(['/job-posts-by-title', title]);
+  }
+
 }

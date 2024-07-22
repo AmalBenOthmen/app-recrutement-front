@@ -45,7 +45,8 @@ export const routes: Routes = [
       { path: 'about-coficab-group', component: AboutUsComponent },
       { path: 'mission-value', component: MissionValueComponent },
       { path: 'vision-strategy', component: MissionValueComponent },
-      {path:'jobApplicationForm', component: JobApplicationComponent}
+      {path:'jobApplicationForm', component: JobApplicationComponent},
+
     ]
   },
   {

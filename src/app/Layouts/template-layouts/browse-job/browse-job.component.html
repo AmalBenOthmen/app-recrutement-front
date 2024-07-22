@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-xl-12">
         <div class="bradcam_text">
-          <h3>Available Jobs </h3>
+          <h3>Available Jobs</h3>
         </div>
       </div>
     </div>
@@ -19,18 +19,18 @@
         <div class="job_filter white-bg">
           <div class="form_inner white-bg">
             <h3>Filter</h3>
-            <form action="#">
+            <form (ngSubmit)="searchJobs()">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="single_field">
-                    <input type="text" placeholder="Search keyword">
+                    <input type="text" [(ngModel)]="searchKeyword" name="searchKeyword" placeholder="Search keyword">
                   </div>
                 </div>
               </div>
+              <div class="reset_btn">
+                <button class="boxed-btn3 w-100" type="submit">Search</button>
+              </div>
             </form>
-          </div>
-          <div class="reset_btn">
-            <button class="boxed-btn3 w-100" type="submit">Search</button>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
                       <a [routerLink]="['/job-details', jobPost.id]"><h4>{{ jobPost.title }}</h4></a>
                       <div class="links_locat d-flex align-items-center">
                         <div class="location">
-                          <p> <i class="fa fa-map-marker"></i>Tunis</p>
+                          <p><i class="fa fa-map-marker"></i>Tunis</p>
                         </div>
                         <div class="location">
                           <p><i class="fa fa-clock-o"></i> {{ jobPost.dateLine }}</p>
@@ -69,11 +69,11 @@
                   </div>
                   <div class="jobs_right">
                     <div class="apply_now">
-                      <a class="heart_mark" href="#"> <i class="fa fa-heart"></i> </a>
-                      <a href="job_details.html" class="boxed-btn3">Apply Now</a>
+                      <a class="heart_mark" href="#"><i class="fa fa-heart"></i></a>
+                      <a [routerLink]="['/job-details', jobPost.id]" class="boxed-btn3">Apply Now</a>
                     </div>
                     <div class="date">
-                      <p>Date line: 31 Jan 2020</p>
+                      <p>Date line: {{ jobPost.dateLine | date: 'dd MMM yyyy' }}</p>
                     </div>
                   </div>
                 </div>
@@ -83,20 +83,7 @@
         </div>
 
         <!-- Pagination Wrap -->
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="pagination_wrap">
-              <ul>
-                <li><a href="#"> <i class="ti-angle-left"></i> </a></li>
-                <li><a href="#"><span>01</span></a></li>
-                <li><a href="#"><span>02</span></a></li>
-                <li><a href="#"> <i class="ti-angle-right"></i> </a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
         <!-- End Pagination Wrap -->
-
       </div>
     </div>
   </div>
