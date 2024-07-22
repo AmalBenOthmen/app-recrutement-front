@@ -11,7 +11,7 @@ import {UserProfile} from "../models/UserProfile";
 })
 export class ProfileService {
 
-  private apiUrl = 'http://localhost:8089/api/v1/users/admin/profile';
+  private apiUrl = 'http://localhost:8089/api/v1/users';
 
   constructor(private http: HttpClient) {}
   private getAuthHeaders(): HttpHeaders {
@@ -23,10 +23,27 @@ export class ProfileService {
   }
 
   getUserProfile(): Observable<UserProfile> {
-    return this.http.get<UserProfile>(this.apiUrl,{ headers: this.getAuthHeaders() }).pipe(
+    const url = `${this.apiUrl}/admin/profile`;
+    const headers = this.getAuthHeaders();
+    return this.http.get<UserProfile>(url,{ headers }).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error('Error fetching user information:', error);
         return throwError(error);
       })
     );
-  }}
+  }
+  updateUserProfile(userProfile: UserProfile): Observable<UserProfile> {
+    const url = `${this.apiUrl}/admin/editProfile`;
+    const headers = this.getAuthHeaders();
+    return this.http.put<UserProfile>(url, userProfile, { headers }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 403) {
+          console.error('Forbidden: You do not have permission to access this resource.');
+        } else {
+          console.error('Error updating user profile:', error);
+        }
+        return throwError(error);
+      })
+    );
+  }
+}

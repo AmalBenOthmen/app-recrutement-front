@@ -16,6 +16,9 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {
   FavoriteJobApplicationComponent
 } from "./views/admin/favorite-job-application/favorite-job-application.component";
+import {CalendarModule, DateAdapter} from "angular-calendar";
+import {adapterFactory} from "angular-calendar/date-adapters/date-fns";
+import {ProfileService} from "./services/services/profile.service";
 
 @NgModule({
   declarations: [
@@ -36,14 +39,16 @@ import {
     CreateJobPostsComponent,
     LoginComponent,
     NgbModule,
-    FavoriteJobApplicationComponent
+    FavoriteJobApplicationComponent,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpTokenInterceptor,
       multi: true
-    }
+    },
+    ProfileService
   ],
   bootstrap: [AppComponent]
 })
