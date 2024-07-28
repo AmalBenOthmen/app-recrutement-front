@@ -1756,7 +1756,9 @@ h3 {
 
 /* line 1, ../../Arafath/CL/December/235. Job board/HTML/scss/_testmonial.scss */
 .testimonial_area {
-  padding: 100px 0;
+  position: relative; /* Nécessaire pour que la ligne horizontale soit placée correctement */
+  padding-bottom: 60px;
+  overflow: visible;
 }
 
 @media (max-width: 767px) {
@@ -1871,12 +1873,12 @@ h3 {
 
 /* line 76, ../../Arafath/CL/December/235. Job board/HTML/scss/_testmonial.scss */
 .testimonial_area .owl-carousel .owl-nav div.owl-next {
-  margin-top: -30px;
+  margin-top: -100px;
 }
 
 /* line 79, ../../Arafath/CL/December/235. Job board/HTML/scss/_testmonial.scss */
 .testimonial_area .owl-carousel .owl-nav div.owl-prev {
-  margin-top: 30px;
+  margin-top: 100px;
 }
 
 /* line 2, ../../Arafath/CL/December/235. Job board/HTML/scss/_accordion.scss */
@@ -2053,7 +2055,7 @@ h3 {
   top: 0;
   height: 100%;
   content: '';
-  background-image: url(assets/user-template/img/faq/faq.png);
+  background-image: url(assets/img/faq/faq.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -2534,7 +2536,7 @@ h3 {
 /* line 1, ../../Arafath/CL/December/235. Job board/HTML/scss/_bradcam.scss */
 .bradcam_bg_1 {
   position: relative; /* Position relative pour le parent */
-  background-image: url(assets/user-template/img/browseJob.jpg);
+  background-image: url(../img/browseJob.jpg);
   background-size: cover; /* Pour s'assurer que l'image couvre tout l'élément */
   background-position: center; /* Centrer l'image */
   max-height: 95px;
@@ -2974,7 +2976,7 @@ h3 {
 
 /* line 27, ../../Arafath/CL/December/235. Job board/HTML/scss/_job.scss */
 .job_searcing_wrap::after {
-  background-image: url(assets/user-template/img/job/1.png);
+  background-image: url(assets/img/job/1.png);
   width: 50%;
   height: 100%;
   background-repeat: no-repeat;
@@ -3041,20 +3043,20 @@ h3 {
 
 /* line 1, ../../Arafath/CL/December/235. Job board/HTML/scss/_testmonial.scss */
 .testimonial_area {
-  padding: 100px 0;
+  padding: 10px 0;
 }
 
 @media (max-width: 767px) {
   /* line 1, ../../Arafath/CL/December/235. Job board/HTML/scss/_testmonial.scss */
   .testimonial_area {
-    padding: 50px 0;
+    padding:10px 0;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   /* line 1, ../../Arafath/CL/December/235. Job board/HTML/scss/_testmonial.scss */
   .testimonial_area {
-    padding: 100px 0;
+    padding: 10px 0;
   }
 }
 
@@ -3156,12 +3158,12 @@ h3 {
 
 /* line 76, ../../Arafath/CL/December/235. Job board/HTML/scss/_testmonial.scss */
 .testimonial_area .owl-carousel .owl-nav div.owl-next {
-  margin-top: -30px;
+  margin-top: -180px;
 }
 
 /* line 79, ../../Arafath/CL/December/235. Job board/HTML/scss/_testmonial.scss */
 .testimonial_area .owl-carousel .owl-nav div.owl-prev {
-  margin-top: 30px;
+  margin-top: -110px;
 }
 
 /* line 1, ../../Arafath/CL/December/235. Job board/HTML/scss/_service.scss */
@@ -5477,7 +5479,7 @@ h6 {
 
 /* line 798, ../../Arafath/CL/December/235. Job board/HTML/scss/_elements.scss */
 .primary-checkbox input:checked + label {
-  background: url(assets/user-template/img/elements/primary-check.png) no-repeat center center/cover;
+  background: url(assets/img/elements/primary-check.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -5519,7 +5521,7 @@ h6 {
 
 /* line 835, ../../Arafath/CL/December/235. Job board/HTML/scss/_elements.scss */
 .confirm-checkbox input:checked + label {
-  background: url(assets/user-template/img/elements/success-check.png) no-repeat center center/cover;
+  background: url(assets/img/elements/success-check.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -5567,7 +5569,7 @@ h6 {
 
 /* line 876, ../../Arafath/CL/December/235. Job board/HTML/scss/_elements.scss */
 .disabled-checkbox input:checked + label {
-  background: url(assets/user-template/img/elements/disabled-check.png) no-repeat center center/cover;
+  background: url(assets/img/elements/disabled-check.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -5609,7 +5611,7 @@ h6 {
 
 /* line 913, ../../Arafath/CL/December/235. Job board/HTML/scss/_elements.scss */
 .primary-radio input:checked + label {
-  background: url(assets/user-template/img/elements/primary-radio.png) no-repeat center center/cover;
+  background: url(assets/img/elements/primary-radio.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -5651,7 +5653,7 @@ h6 {
 
 /* line 950, ../../Arafath/CL/December/235. Job board/HTML/scss/_elements.scss */
 .confirm-radio input:checked + label {
-  background: url(assets/user-template/img/elements/success-radio.png) no-repeat center center/cover;
+  background: url(assets/img/elements/success-radio.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -5699,7 +5701,7 @@ h6 {
 
 /* line 991, ../../Arafath/CL/December/235. Job board/HTML/scss/_elements.scss */
 .disabled-radio input:checked + label {
-  background: url(assets/user-template/img/elements/disabled-radio.png) no-repeat center center/cover;
+  background: url(assets/img/elements/disabled-radio.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -7597,43 +7599,46 @@ p{
   color:#663E10;
 }
 .container-milestones {
+
   text-align: center;
   color: #02034d;
-  margin-top: 100px;
+  margin-top: 10px;
   font-style: italic;
+
 }
+
 
 
 
 .milestone-image1{
-  margin-top: -200px;
+  transform: translateY(-150px);
 }
 .milestone-image2{
-  margin-top: -100px;
+  transform: translateY(-141px);
 }
 .milestone-image3{
-  margin-top: -195px;
+  transform: translateY(-150px);
 }
 .milestone-image4{
-  margin-top: -95px;
+  transform: translateY(-150px);
 }
 .milestone-image5{
-  margin-top: -195px;
+  transform: translateY(-150px);
 }
 .milestone-image6{
-  margin-top: -100px;
+  transform: translateY(-150px);
 }
 .global-leader {
   display: flex;
   flex-direction: row; /* Par défaut, mais indiqué pour la clarté */
   align-items: center; /* Pour aligner les éléments verticalement au centre */
-  margin-top: 100px
+  margin-top: 50px
 
 }
 
 .global-leader h1 {
   flex: 1;
-  padding: 1px;
+  padding: 30px;
   margin: 10px;
   max-width: 450px;
 
@@ -7684,51 +7689,49 @@ p{
 }
 .container-global {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column; /* Empiler les éléments verticalement */
+  align-items: flex-start; /* Aligner les éléments à gauche */
   margin-top: 100px;
   font-family: sans-serif;
   background-color: #F3F0EC;
   padding-top: 100px;
 }
-.container-title h5{
-  margin-right: -100px;
+
+.container-title {
+  text-align: left; /* Aligner le texte à gauche dans le conteneur du titre */
+  margin-bottom: 30px; /* Ajouter de l'espace sous le titre */
+  width: 100%; /* S'assurer que le conteneur du titre occupe toute la largeur */
+  padding-left: 20px; /* Ajouter du padding à gauche pour plus de marge */
+}
+
+.container-title h5 {
   color: #02034d;
   font-size: 50px;
-  margin-left: 50px;
-  margin-top: -10px;
-
+  margin-bottom: 0px; /* Supprimer les marges par défaut */
 }
-.container-title h1{
-  flex: 1;
-  padding: 1px;
-  margin: 10px;
-  margin-top: -30px;
+
+.container-title h1 {
   color: #02034d;
   font-size: 70px;
-  margin-left: 29px;
-  margin-right: 50px;
+  margin: 0; /* Supprimer les marges par défaut */
 }
 
-container-value p {
-  font-size: 1.2em;
-  color: #664c3b;
-
-}
 .container-values {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Deux colonnes de largeur égale */
   gap: 20px; /* Espacement entre les éléments */
   padding: 20px; /* Optionnel : padding autour du conteneur */
+  text-align: left; /* Aligner le texte des paragraphes à gauche */
 
 }
 
 .container-values > div {
-
   padding: 20px; /* Optionnel : padding à l'intérieur des divs */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optionnel : ajout d'une ombre pour un effet visuel */
+  /* Retirer les bordures et ombres des divs */
+  box-shadow: none; /* Supprimer l'ombre pour enlever le contour */
+  border: none; /* Supprimer les bordures */
 }
 
-/* Styles supplémentaires pour les titres et les paragraphes */
 .container-values h1 {
   color: #02034d;
   font-size: 36px; /* Ajustez selon vos besoins */
@@ -7745,10 +7748,5 @@ container-value p {
   font-size: 16px; /* Ajustez selon vos besoins */
   font-weight: 300; /* Rendre le texte plus fin */
   color: #333; /* Couleur du texte */
+  margin: 0; /* Supprimer les marges par défaut */
 }
-.img-bleu{
-  width: 100px; /* Ajustez cette valeur selon vos besoins */
-    height: auto; /* Maintient le ratio d'aspect de l'image */
-}
-
-/*# sourceMappingURL=style.css.map */

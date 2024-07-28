@@ -1,0 +1,38 @@
+.section_about {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.horizontalLine {
+  position: absolute;
+  bottom: 600px; /* Positionnez la ligne en bas du conteneur parent */
+  left: 0;
+  width: 100%;
+  text-align: center; /* Centre la ligne horizontalement */
+}
+
+.horizontal-line {
+  display: inline-block;
+  width: 80%; /* Ajustez la largeur selon vos besoins */
+  height: 2px;
+  background-color: #9d9a9a;
+  margin: 0 auto; /* Centre la ligne */
+}
+.images-home-header {
+  padding: 10px 0;
+  background: #ffffff;
+  text-align: center;
+}
+
+.images-home-title h4 {
+  font-size: 3em; /* Taille de la police pour <h4> */
+  font-weight: bold; /* Mettre en gras */
+  margin: 0; /* Supprimer les marges par défaut */
+  color: #021249;
+}
+
+.images-home-title h1 {
+  font-size: 4em; /* Taille de la police pour <h1> */
+  font-weight: bolder; /* Mettre encore plus en gras */
+  margin: 10px 0 0; /* Ajouter une marge supérieure pour espacer du <h4> */
+  color: #021249;
+}

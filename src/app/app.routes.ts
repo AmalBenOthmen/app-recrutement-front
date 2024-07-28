@@ -28,6 +28,12 @@ import {
 } from "./views/admin/favorite-job-application-list/favorite-job-application-list.component";
 import {MessagesReceivedComponent} from "./views/admin/messages-received/messages-received.component";
 import {ProfileComponent} from "./views/admin/profile/profile.component";
+import {
+  FavoriteJobPostListComponent
+} from "./Layouts/template-layouts/FavoriteJobPostList/favorite-job-post-list.component";
+import {
+  VisionStrategyComponent
+} from "./Layouts/template-layouts/Our vision et strategy/vision-strategy/vision-strategy.component";
 
 
 export const routes: Routes = [
@@ -45,8 +51,9 @@ export const routes: Routes = [
       { path: 'job-statistics', component: StatisticsComponent, canActivate: [authGuard] },
       { path: 'about-coficab-group', component: AboutUsComponent },
       { path: 'mission-value', component: MissionValueComponent },
-      { path: 'vision-strategy', component: MissionValueComponent },
+      { path: 'vision-strategy', component: VisionStrategyComponent },
       {path:'jobApplicationForm', component: JobApplicationComponent},
+      {path:'favoriteJobPostList',component: FavoriteJobPostListComponent}
 
     ]
   },
@@ -60,8 +67,11 @@ export const routes: Routes = [
       { path: 'get-all-jobApplicationForm-by-jobPost/:id', component: GetAllJobApplicationByJobpostIdComponent },
       {path:'get-Favorite-jobAPP-list',component: FavoriteJobApplicationListComponent},
       { path: 'messages-received', component: MessagesReceivedComponent },
-      {path:'profile',component: ProfileComponent}
- ] }
+
+ ]},
+
+  {path:'profile',component: ProfileComponent},
+
 
 
 

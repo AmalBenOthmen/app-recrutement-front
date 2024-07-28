@@ -1,0 +1,64 @@
+.img-bleu img {
+  width: 100%;    // Makes the image span the full width of its container
+  height: 250px;   // Maintains the aspect ratio
+}
+.our-mission-is {
+  margin-top: 100px;  // Adjust the value as needed
+}
+
+.our-mission-is p {
+  margin-top: 20px;  // Ajustez la valeur selon vos besoins
+}
+.our-mission-is h5{
+  font-size: 3em;
+}
+.OUR-VALUE {
+  padding: 20px;
+  background-color: #e7e4df;
+  margin-top: 150px;
+}
+
+.OurValue-title {
+  text-align: left;
+  margin-bottom: 20px;
+  margin-left: 40px;
+}
+
+.OurValue-title h5 {
+  font-size: 3em;
+  color: #021249;
+}
+
+.OurValue-title h1 {
+  font-size: 5em;
+  color: #021249;
+}
+
+.container-passion {
+  display: grid;
+  grid-template-columns: 1fr 1fr; // Create two columns
+  gap: 20px; // Gap between the sections
+  margin-left: 40px;
+}
+
+.value-section {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.value-section h1 {
+  font-size: 4em; // Updated font size
+  color: blue; // Updated color
+}
+
+.value-section h4 {
+  font-size: 18px;
+  color: brown; // Updated color
+  font-weight: bold; // Make bold
+}
+
+.value-section p {
+  font-size: 16px; // Normal size for paragraphs
+  color: #000; // Default text color
+}

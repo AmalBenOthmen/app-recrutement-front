@@ -14,42 +14,29 @@ import {FormsModule} from "@angular/forms";
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
-  userProfile: UserProfile | null = null;
-  isEditMode: boolean = false;
+export class ProfileComponent {
+  email: string = '';
+file: File | null = null;
 
-  constructor(private userProfileService: ProfileService) {}
+constructor(private uploadPhotoService: ProfileService) {}
 
-  ngOnInit(): void {
-    this.loadUserProfile();
-  }
+onFileSelected(event: any) {
+  this.file = event.target.files[0];
+}
 
-  loadUserProfile(): void {
-    this.userProfileService.getUserProfile().subscribe(
-      (data) => {
-        this.userProfile = data;
+onUpload() {
+  if (this.email && this.file) {
+    this.uploadPhotoService.uploadPhoto(this.email, this.file).subscribe(
+      (response) => {
+        alert(response.message);
       },
       (error) => {
-        console.error('Error fetching user profile', error);
+        console.error('Error uploading image:', error);
+        alert('Failed to upload image.');
       }
     );
+  } else {
+    alert('Please provide an email and select a file.');
   }
-
-  toggleEditMode(): void {
-    this.isEditMode = !this.isEditMode;
-  }
-
-  onSubmit(): void {
-    if (this.userProfile) {
-      this.userProfileService.updateUserProfile(this.userProfile).subscribe(
-        (response) => {
-          this.isEditMode = false;
-          this.loadUserProfile();
-        },
-        (error) => {
-          console.error('Failed to update profile', error);
-        }
-      );
-    }
-  }
+}
 }
