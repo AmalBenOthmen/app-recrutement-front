@@ -15,23 +15,7 @@ export class MessageService {
   private ws!: WebSocket;
 
   constructor(private http: HttpClient, private tokenService: TokenService) {
-    this.connectWebSocket();
-  }
 
-  connectWebSocket() {
-    this.ws = new WebSocket('ws://localhost:8089/ws'); // Replace with your WebSocket URL
-
-    this.ws.onmessage = (event) => {
-      const newMessage: Message = JSON.parse(event.data);
-      const messages = this.messagesSubject.getValue();
-      messages.push(newMessage);
-      this.messagesSubject.next([...messages]);
-    };
-
-    this.ws.onclose = () => {
-      console.log('WebSocket connection closed. Reconnecting...');
-      setTimeout(() => this.connectWebSocket(), 1000);
-    };
   }
 
   saveMessage(message: Message): Observable<Message> {

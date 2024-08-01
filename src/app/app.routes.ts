@@ -34,6 +34,8 @@ import {
 import {
   VisionStrategyComponent
 } from "./Layouts/template-layouts/Our vision et strategy/vision-strategy/vision-strategy.component";
+import {AdminContainerComponent} from "./Layouts/admin-template-layout/admin-container/admin-container.component";
+import {UpdateJobPostComponent} from "./views/admin/update-job-post/update-job-post.component";
 
 
 export const routes: Routes = [
@@ -62,11 +64,14 @@ export const routes: Routes = [
     component: AdminDashboardComponent,
     canActivate: [authGuard],
     children: [
+      { path: '', component: AdminContainerComponent },
       { path: 'create-jobPosts', component: CreateJobPostsComponent},
       {path:'get-all-jobPosts',component: GetAllJobPostsComponent},
       { path: 'get-all-jobApplicationForm-by-jobPost/:id', component: GetAllJobApplicationByJobpostIdComponent },
       {path:'get-Favorite-jobAPP-list',component: FavoriteJobApplicationListComponent},
+      { path: 'update-job-post/:id', component: UpdateJobPostComponent },
       { path: 'messages-received', component: MessagesReceivedComponent },
+
 
  ]},
 

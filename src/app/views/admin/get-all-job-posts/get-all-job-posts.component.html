@@ -6,7 +6,7 @@
         <div class="jobPost-single white-bg d-flex justify-content-between">
           <div class="jobPost-left d-flex align-items-center">
             <div class="jobPost-thumb">
-              <img src="img/svg_icon/1.svg" alt="">
+              <img src="assets/img/svg_icon/1.svg" alt="">
             </div>
             <div class="jobPost-content">
               <a [routerLink]="['/admin/get-all-jobApplicationForm-by-jobPost', jobPost.id]"><h4>{{ jobPost.title }}</h4></a>
@@ -15,15 +15,16 @@
                 <div class="jobPost-location">
                   <p><i class="fa fa-map-marker"></i> Tunis</p>
                 </div>
+
                 <div class="jobPost-dateLine">
-                  <p><i class="fa fa-clock-o"></i> {{ jobPost.dateLine }}</p>
+                  <p><i class="fa fa-clock-o"></i>   {{ jobPost.dateLine }}</p>
                 </div>
               </div>
             </div>
           </div>
           <div class="jobPost-right">
-
-
+            <button (click)="onUpdate(jobPost.id)" class="btn btn-primary ">Update</button>
+            <button (click)="onDelete(jobPost.id)" class="btn btn-danger">Delete</button>
           </div>
         </div>
       </div>

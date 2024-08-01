@@ -6,7 +6,7 @@
       <div class="logo-header" data-background-color="dark">
         <a href="index.html" class="logo">
           <img
-            src="assets/admin-dashboard/assets/img/kaiadmin/logo_light.svg"
+            src="assets/img/Coficab%20logo.png"
             alt="navbar brand"
             class="navbar-brand"
             height="20"
@@ -38,23 +38,15 @@
             >
               <i class="fas fa-home"></i>
               <p>Dashboard</p>
-              <span class="caret"></span>
+
             </a>
-            <div class="collapse" id="dashboard">
-              <ul class="nav nav-collapse">
-                <li>
-                  <a href="../demo1/index.html">
-                    <span class="sub-item">Dashboard 1</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
+
           </li>
           <li class="nav-section">
                 <span class="sidebar-mini-icon">
                   <i class="fa fa-ellipsis-h"></i>
                 </span>
-            <h4 class="text-section">Components</h4>
+
           </li>
           <li class="nav-item">
             <a data-bs-toggle="collapse" href="#base">
@@ -535,7 +527,7 @@
     </div>
 
 <router-outlet></router-outlet>
-
+    <app-admin-container *ngIf="showAdminContainer"></app-admin-container>
 
   <!-- End Custom template -->
 </div>

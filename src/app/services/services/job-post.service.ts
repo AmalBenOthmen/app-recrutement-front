@@ -79,4 +79,21 @@ export class JobPostService {
       })
     );
   }
+  deleteJobPost(jobPostId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/delete/${jobPostId}`, { headers: this.getAuthHeaders() }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error deleting job post:', error);
+        return throwError(error);
+      })
+    );
+  }
+  updateJobPost(jobPostId: number, jobPost: JobPostRequest): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/update/${jobPostId}`, jobPost, { headers: this.getAuthHeaders() }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error updating job post:', error);
+        return throwError(error);
+      })
+    );
+  }
+
 }

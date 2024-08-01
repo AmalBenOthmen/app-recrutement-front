@@ -68,4 +68,14 @@ export class ProfileService {
       })
     );
   }
+  getUserCount(): Observable<number> {
+    const url = `${this.apiUrl}/admin/user-count`;
+    const headers = this.getAuthHeaders();
+    return this.http.get<number>(url, { headers }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error fetching user count:', error);
+        return throwError(error);
+      })
+    );
+  }
 }
