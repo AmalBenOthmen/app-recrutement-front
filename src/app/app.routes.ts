@@ -71,11 +71,12 @@ export const routes: Routes = [
       {path:'get-Favorite-jobAPP-list',component: FavoriteJobApplicationListComponent},
       { path: 'update-job-post/:id', component: UpdateJobPostComponent },
       { path: 'messages-received', component: MessagesReceivedComponent },
+      {path:'profile',component: ProfileComponent},
 
 
  ]},
 
-  {path:'profile',component: ProfileComponent},
+
 
 
 

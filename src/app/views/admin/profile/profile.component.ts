@@ -1,42 +1,58 @@
 import { Component, OnInit } from '@angular/core';
-import { UserProfile } from "../../../services/models/UserProfile";
-import { ProfileService } from "../../../services/services/profile.service";
-import { NgIf } from "@angular/common";
+import {UserProfile} from "../../../services/models/UserProfile";
+import {ProfileService} from "../../../services/services/profile.service";
 import {FormsModule} from "@angular/forms";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-profile',
+  templateUrl: './profile.component.html',
   standalone: true,
   imports: [
-    NgIf,
-    FormsModule
+    FormsModule,
+    NgIf
   ],
-  templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent {
-  email: string = '';
-file: File | null = null;
+export class ProfileComponent implements OnInit {
+  userProfile: UserProfile = new UserProfile('', '', '', '');
+  isEditing: boolean = false;
 
-constructor(private uploadPhotoService: ProfileService) {}
+  constructor(private profileService: ProfileService) { }
 
-onFileSelected(event: any) {
-  this.file = event.target.files[0];
-}
+  ngOnInit(): void {
+    this.getUserProfile();
+  }
 
-onUpload() {
-  if (this.email && this.file) {
-    this.uploadPhotoService.uploadPhoto(this.email, this.file).subscribe(
-      (response) => {
-        alert(response.message);
+  getUserProfile(): void {
+    this.profileService.getUserProfile().subscribe(
+      (data: UserProfile) => {
+        this.userProfile = data;
       },
       (error) => {
-        console.error('Error uploading image:', error);
-        alert('Failed to upload image.');
+        console.error('Error fetching user profile', error);
       }
     );
-  } else {
-    alert('Please provide an email and select a file.');
   }
-}
+
+  toggleEditMode(): void {
+    if (this.isEditing) {
+      this.updateUserProfile();
+    }
+    this.isEditing = !this.isEditing;
+  }
+
+  updateUserProfile(): void {
+    this.profileService.updateUserProfile(this.userProfile).subscribe(
+      (data: UserProfile) => {
+        this.userProfile = data;
+        alert('Profile updated successfully');
+      },
+      (error) => {
+        console.error('Error updating user profile', error);
+      }
+    );
+  }
+
+
 }

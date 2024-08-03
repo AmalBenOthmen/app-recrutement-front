@@ -1,10 +1,13 @@
-export interface UserProfile {
-  id: number;
-  createdDate: string;
-  lastModifiedDate: string;
+export class UserProfile {
   firstname: string;
   lastname: string;
   email: string;
-  password?: string;
-  photo:string;
+  password: string;
+
+  constructor(firstname: string, lastname: string, email: string, password: string) {
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.email = email;
+    this.password = password;
+  }
 }

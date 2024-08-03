@@ -1,9 +1,110 @@
-<!-- upload-photo.component.html -->
-<div class="upload-photo-container">
-  <h2>Upload User Photo</h2>
-  <form (submit)="onUpload()">
-    <input type="email" [(ngModel)]="email" name="email" placeholder="Enter email" required>
-    <input type="file" (change)="onFileSelected($event)" accept="image/*" required>
-    <button type="submit">Upload</button>
-  </form>
+<div class="container emp-profile">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="profile-img">
+        <img [src]=" 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog'" alt="Profile Photo"/>
+
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="profile-head">
+        <h5>{{ userProfile?.firstname }}</h5>
+        <h6>HR Manager</h6>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <input type="button" class="profile-edit-btn" [value]="isEditing ? 'Save Profile' : 'Edit Profile'" (click)="toggleEditMode()"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="profile-work">
+        <p>WORK LINK</p>
+
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="tab-content profile-tab" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="row" *ngIf="isEditing; else viewMode">
+            <div class="col-md-6">
+              <label>First Name</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" [(ngModel)]="userProfile.firstname" name="firstname" class="form-control" required/>
+            </div>
+          </div>
+          <ng-template #viewMode>
+            <div class="row">
+              <div class="col-md-6">
+                <label>First Name</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ userProfile?.firstname || 'N/A' }}</p>
+              </div>
+            </div>
+          </ng-template>
+          <div class="row" *ngIf="isEditing; else viewModeLastName">
+            <div class="col-md-6">
+              <label>Last Name</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" [(ngModel)]="userProfile.lastname" name="lastname" class="form-control" required/>
+            </div>
+          </div>
+          <ng-template #viewModeLastName>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Last Name</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ userProfile?.lastname || 'N/A' }}</p>
+              </div>
+            </div>
+          </ng-template>
+          <div class="row" *ngIf="isEditing; else viewModeEmail">
+            <div class="col-md-6">
+              <label>Email</label>
+            </div>
+            <div class="col-md-6">
+              <input type="email" [(ngModel)]="userProfile.email" name="email" class="form-control" required/>
+            </div>
+          </div>
+          <ng-template #viewModeEmail>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Email</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ userProfile?.email || 'N/A' }}</p>
+              </div>
+            </div>
+          </ng-template>
+          <div class="row" *ngIf="isEditing; else viewModePassword">
+            <div class="col-md-6">
+              <label>Password</label>
+            </div>
+            <div class="col-md-6">
+              <input type="password" [(ngModel)]="userProfile.password" name="password" class="form-control"/>
+            </div>
+          </div>
+          <ng-template #viewModePassword>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Password</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ userProfile?.password ? '********' : 'N/A' }}</p>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
