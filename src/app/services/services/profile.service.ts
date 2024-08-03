@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {catchError, Observable, throwError} from "rxjs";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {UserProfile} from "../models/UserProfile";
+import {Router} from "@angular/router";
 
 
 
@@ -13,7 +14,7 @@ export class ProfileService {
 
   private apiUrl = 'http://localhost:8089/api/v1/users';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private router:Router) {
   }
 
   private getAuthHeaders(): HttpHeaders {
@@ -78,4 +79,23 @@ export class ProfileService {
       })
     );
   }
+  logout(): void {
+    // Get token from local storage
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      this.http.delete(`http://localhost:8089/api/v1/auth/logout?token=${token}`).subscribe(
+        () => {
+          // Clear token from local storage
+          localStorage.removeItem('token');
+          // Redirect to login or home page
+          this.router.navigate(['/login']);
+        },
+        error => {
+          console.error('Logout failed', error);
+        }
+      );
+    }
+  }
+
 }

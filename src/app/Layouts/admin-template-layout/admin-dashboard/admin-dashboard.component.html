@@ -404,7 +404,7 @@
                 <div class="quick-actions-scroll scrollbar-outer">
                   <div class="quick-actions-items">
                     <div class="row m-0">
-                      <a class="col-6 col-md-4 p-0" href="#">
+                      <a class="col-6 col-md-4 p-0" href="https://calendar.google.com/calendar/u/0/r">
                         <div class="quick-actions-item">
                           <div class="avatar-item bg-danger rounded-circle">
                             <i class="far fa-calendar-alt"></i>
@@ -412,7 +412,7 @@
                           <span class="text">Calendar</span>
                         </div>
                       </a>
-                      <a class="col-6 col-md-4 p-0" href="#">
+                      <a class="col-6 col-md-4 p-0" href="https://www.google.fr/maps">
                         <div class="quick-actions-item">
                           <div
                             class="avatar-item bg-warning rounded-circle"
@@ -430,7 +430,7 @@
                           <span class="text">Reports</span>
                         </div>
                       </a>
-                      <a class="col-6 col-md-4 p-0" href="#">
+                      <a class="col-6 col-md-4 p-0" href="https://mail.google.com/mail/u/0/?hl=fr#inbox">
                         <div class="quick-actions-item">
                           <div
                             class="avatar-item bg-success rounded-circle"
@@ -508,14 +508,15 @@
                     </div>
                   </li>
                   <li>
-                    <div class="dropdown-divider"></div>
+
                     <a class="dropdown-item" href="#">My Profile</a>
                     <a class="dropdown-item" href="#">My Balance</a>
                     <a class="dropdown-item" href="#">Inbox</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Account Setting</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" (click)="logout()">Logout</a>
+
                   </li>
                 </div>
               </ul>

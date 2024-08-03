@@ -1,27 +1,36 @@
-import {Component, OnInit} from '@angular/core';
-import {ProfileService} from "../../../services/services/profile.service";
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-declare function createGoogleEvent(eventDetails: { email: string; startTime: string; endTime: string }): void;
-
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgForOf } from '@angular/common';
+import { ProfileService } from '../../../services/services/profile.service';
+import { NoteService, Note } from '../../../services/services/noteService';
 
 @Component({
   selector: 'app-admin-container',
   templateUrl: './admin-container.component.html',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgForOf
   ],
   styleUrls: ['./admin-container.component.scss']
 })
 export class AdminContainerComponent implements OnInit {
   userCount: number | undefined;
   appointmentForm!: FormGroup;
+  notes: Note[] = [];
+  newNote: Note = { id: 0, content: '' };
+  errorMessage: string = '';
 
-  constructor(private profileService: ProfileService, private fb: FormBuilder) { }
+  constructor(
+    private profileService: ProfileService,
+    private fb: FormBuilder,
+    private noteService: NoteService
+  ) { }
 
   ngOnInit(): void {
     this.loadUserCount();
     this.initializeForm();
+    this.loadNotes();  // Load notes when the component initializes
   }
 
   loadUserCount(): void {
@@ -44,7 +53,6 @@ export class AdminContainerComponent implements OnInit {
 
   scheduleMeeting() {
     let appointmentTime = new Date(this.appointmentForm.value.appointmentTime);
-    // Convert the date to the desired format with a custom offset (e.g., -07:00)
     const startTime = appointmentTime.toISOString().slice(0, 18) + '-07:00';
     const endTime = this.getEndTime(appointmentTime);
     const eventDetails = {
@@ -53,58 +61,85 @@ export class AdminContainerComponent implements OnInit {
       endTime: endTime,
     };
     console.info(eventDetails);
-    //this.generateICSFile()
-    createGoogleEvent(eventDetails);
+    this.redirectToGoogleCalendar(eventDetails);
   }
 
   getEndTime(appointmentTime: Date) {
-    // Add one hour to the date
     appointmentTime.setHours(appointmentTime.getHours() + 1);
     const endTime = appointmentTime.toISOString().slice(0, 18) + '-07:00';
     return endTime;
   }
 
-  generateICSFile() {
-    const datetimeValue = this.appointmentForm.value.appointmentTime;
-    const date = new Date(datetimeValue);
-    const endTime = new Date(date);
-    endTime.setHours(endTime.getHours() + 1);
-    // Format dates to be in the proper format for the .ics file
-    const formattedStartDate = date
-      .toISOString()
-      .replace(/-/g, '')
-      .replace(/:/g, '')
-      .slice(0, -5);
-    const formattedEndDate = endTime
-      .toISOString()
-      .replace(/-/g, '')
-      .replace(/:/g, '')
-      .slice(0, -5);
-    // Event details
-    const eventName = 'Sample Event';
-    const eventDescription = 'This is a sample event';
-    const location = 'Sample Location';
-    // Create the .ics content
-    const icsContent = `BEGIN:VCALENDAR
-  VERSION:2.0
-  BEGIN:VEVENT
-  DTSTAMP:${formattedStartDate}Z
-  DTSTART:${formattedStartDate}Z
-  DTEND:${formattedEndDate}Z
-  SUMMARY:${eventName}
-  DESCRIPTION:${eventDescription}
-  LOCATION:${location}
-  END:VEVENT
-  END:VCALENDAR`;
-    // Create a Blob containing the .ics content
-    const blob = new Blob([icsContent], {
-      type: 'text/calendar;charset=utf-8',
+  redirectToGoogleCalendar(eventDetails: { email: string, startTime: string, endTime: string }) {
+    const baseUrl = 'https://calendar.google.com/calendar/u/0/r/eventedit';
+    const startDateTime = eventDetails.startTime.replace(/-|:|\.\d\d\d/g, '');
+    const endDateTime = eventDetails.endTime.replace(/-|:|\.\d\d\d/g, '');
+    const params = new URLSearchParams({
+      dates: `${startDateTime}/${endDateTime}`,
+      text: 'Scheduled Meeting',
+      location: 'Online',
+      details: 'This is a scheduled meeting.',
+      add: eventDetails.email,
     });
-    // Create a download link for the Blob
-    const downloadLink = document.createElement('a');
-    downloadLink.href = URL.createObjectURL(blob);
-    downloadLink.download = 'event.ics';
-    // Trigger the download
-    downloadLink.click();
+
+    const url = `${baseUrl}?${params.toString()}`;
+    window.open(url, '_blank');
+  }
+
+  loadNotes(): void {
+    this.noteService.getNotes().subscribe(
+      notes => {
+        this.notes = notes;
+      },
+      error => {
+        console.error('Error loading notes', error);
+      }
+    );
+  }
+
+  saveNote() {
+    this.noteService.addNote(this.newNote).subscribe(
+      (response) => {
+        console.log('Note saved successfully', response);
+        this.notes.push(response); // Add the new note to the list
+        this.newNote = { id: 0, content: '' }; // Reset the new note
+      },
+      (error) => {
+        console.error('Error saving note', error);
+        this.errorMessage = 'Error saving note. Please try again later.';
+      }
+    );
+  }
+
+  deleteNote(index: number): void {
+    const noteId = this.notes[index].id;
+    if (noteId) {
+      this.noteService.deleteNote(noteId).subscribe(
+        () => {
+          this.notes.splice(index, 1);
+        },
+        error => {
+          console.error('Error deleting note', error);
+        }
+      );
+    } else {
+      this.notes.splice(index, 1);
+    }
+  }
+
+  updateNoteContent(index: number, content: string | null): void {
+    const noteContent = content || ''; // Handle null by defaulting to an empty string
+    if (this.notes[index].content !== noteContent) {
+      this.notes[index].content = noteContent;
+      const note = this.notes[index];
+      this.noteService.updateNote(note).subscribe(
+        () => {
+          console.info('Note updated successfully');
+        },
+        error => {
+          console.error('Error updating note', error);
+        }
+      );
+    }
   }
 }

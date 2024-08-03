@@ -4,6 +4,7 @@ import { RouterModule, RouterOutlet, Router, NavigationEnd } from "@angular/rout
 import { Message } from "../../../services/models/message";
 import { MessageService } from "../../../services/services/messageService";
 import { AdminContainerComponent } from "../admin-container/admin-container.component";
+import {ProfileService} from "../../../services/services/profile.service";
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -17,7 +18,7 @@ export class AdminDashboardComponent implements OnInit {
   public unreadCount: number = 0;
   showAdminContainer: boolean = true;
 
-  constructor(private messageService: MessageService, private router: Router) {
+  constructor(private messageService: MessageService, private router: Router,private profileService:ProfileService) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         // Si la route change, cacher AdminContainerComponent sauf pour la route 'admin'
@@ -46,5 +47,8 @@ export class AdminDashboardComponent implements OnInit {
         this.messageService.markAsRead(message.id!).subscribe();
       }
     });
+  }
+  logout(): void {
+    this.profileService.logout();
   }
 }
