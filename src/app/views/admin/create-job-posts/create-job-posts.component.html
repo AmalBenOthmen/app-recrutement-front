@@ -24,7 +24,7 @@
 
     <div class="mb-3">
       <label for="responsibilities" class="form-label">Responsibilities</label>
-      <input id="responsibilities" formControlName="responsibilities" type="text" class="form-control" placeholder="Responsibilities"/>
+      <textarea id="responsibilities" formControlName="responsibilities" class="form-control" placeholder="Responsibilities" rows="4"></textarea>
       <div *ngIf="jobPostForm.get('responsibilities')?.invalid && jobPostForm.get('responsibilities')?.touched" class="text-danger">
         Responsibilities are required.
       </div>
@@ -32,11 +32,12 @@
 
     <div class="mb-3">
       <label for="requirementsANDskills" class="form-label">Requirements and Skills</label>
-      <input id="requirementsANDskills" formControlName="requirementsANDskills" type="text" class="form-control" placeholder="Requirements and Skills"/>
+      <textarea id="requirementsANDskills" formControlName="requirementsANDskills" class="form-control" placeholder="Requirements and Skills" rows="4"></textarea>
       <div *ngIf="jobPostForm.get('requirementsANDskills')?.invalid && jobPostForm.get('requirementsANDskills')?.touched" class="text-danger">
         Requirements and skills are required.
       </div>
     </div>
+
 
     <div class="mb-3">
       <label for="dateLine" class="form-label">Deadline</label>

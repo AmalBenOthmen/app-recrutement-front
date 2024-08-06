@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-xl-12">
           <div class="bradcam_text">
-            <h3>{{ jobPost.title }}</h3> <!-- Remove safe navigation operator -->
+            <h3>{{ jobPost.title }}</h3>
           </div>
         </div>
       </div>
@@ -21,10 +21,10 @@
             <div class="single_jobs white-bg d-flex justify-content-between">
               <div class="jobs_left d-flex align-items-center">
                 <div class="thumb">
-                  <img src="img/svg_icon/1.svg" alt="">
+                  <img src="/assets/img/svg_icon/1.svg" alt="">
                 </div>
                 <div class="jobs_conetent">
-                  <a href="#"><h4>{{ jobPost.title }}</h4></a> <!-- Remove safe navigation operator -->
+                  <a href="#"><h4>{{ jobPost.title }}</h4></a>
                   <div class="links_locat d-flex align-items-center">
                     <div class="location">
                       <p><i class="fa fa-map-marker"></i> Tunis</p>
@@ -45,18 +45,18 @@
           <div class="descript_wrap white-bg">
             <div class="single_wrap">
               <h4>Job description</h4>
-              <p>{{ jobPost.description }}</p> <!-- Remove safe navigation operator -->
+              <p>{{ jobPost.description }}</p>
             </div>
             <div class="single_wrap">
               <h4>Responsibility</h4>
               <ul>
-                <li>{{ jobPost.responsibilities }}</li> <!-- Remove safe navigation operator -->
+                <li *ngFor="let responsibility of responsibilitiesList">{{ responsibility }}</li>
               </ul>
             </div>
             <div class="single_wrap">
               <h4>Requirements And Skills</h4>
               <ul>
-                <li>{{ jobPost.requirementsANDskills }}</li> <!-- Remove safe navigation operator -->
+                <li *ngFor="let requirement of requirementsAndSkillsList">{{ requirement }}</li>
               </ul>
             </div>
           </div>
@@ -77,7 +77,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <app-job-application [jobPostId]="jobPost.id" (formSubmitted)="handleFormSubmitted($event)"></app-job-application> <!-- Remove safe navigation operator -->
+                  <app-job-application [jobPostId]="jobPost.id" (formSubmitted)="handleFormSubmitted($event)"></app-job-application>
                 </div>
               </div>
             </div>
@@ -99,10 +99,10 @@
           <div class="share_wrap d-flex">
             <span>Follow Us:</span>
             <ul>
-              <li><a href="https://www.facebook.com/CoficabTunisCCE"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="http://www.coficab.com"><i class="fa fa-google-plus"></i></a></li>
-              <li><a href="https://www.linkedin.com/company/coficab-tunisia"><i class="fa fa-linkedin"></i></a></li>
-              <li><a href="https://www.youtube.com/channel/UCCNDTduq7IH4vbPm27RnFKQ"><i class="fa fa-youtube"></i></a></li>
+              <li><a href="https://www.facebook.com/CoficabTunisCCE"><i class="fab fa-facebook"></i></a></li>
+              <li><a href="http://www.coficab.com"><i class="fab fa-google-plus"></i></a></li>
+              <li><a href="https://www.linkedin.com/company/coficab-tunisia"><i class="fab fa-linkedin"></i></a></li>
+              <li><a href="https://www.youtube.com/channel/UCCNDTduq7IH4vbPm27RnFKQ"><i class="fab fa-youtube"></i></a></li>
             </ul>
           </div>
         </div>

@@ -4110,13 +4110,17 @@ h3 {
   color: #7A838B;
   font-weight: 400;
   position: relative;
-  padding-left: 25px;
+  padding-left: 20px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+
 }
 
 /* line 137, ../../Arafath/CL/December/235. Job board/HTML/scss/_job_details.scss */
 .job_details_area .descript_wrap .single_wrap ul li::before {
   position: absolute;
   left: 0;
+
   top: 0;
   width: 7px;
   height: 7px;
@@ -4126,6 +4130,7 @@ h3 {
   -moz-border-radius: 50%;
   border-radius: 50%;
   top: 12px;
+  margin-right: 200px;
 }
 
 /* line 152, ../../Arafath/CL/December/235. Job board/HTML/scss/_job_details.scss */

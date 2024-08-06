@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { JobPostResponse } from '../../../../services/models/job-post-response';
 import { JobPostService } from '../../../../services/services/job-post.service';
 import {JobApplicationComponent} from "../../../../views/user/job-application/job-application.component";
-import {NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-job-details',
@@ -11,7 +11,8 @@ import {NgIf} from "@angular/common";
   standalone: true,
   imports: [
     JobApplicationComponent,
-    NgIf
+    NgIf,
+    NgForOf
   ],
   styleUrls: ['./job-details.component.scss']
 })
@@ -32,7 +33,13 @@ export class JobDetailsComponent implements OnInit {
       });
     }
   }
+  get responsibilitiesList(): string[] {
+    return this.jobPost?.responsibilities?.split('\n') || [];
+  }
 
+  get requirementsAndSkillsList(): string[] {
+    return this.jobPost?.requirementsANDskills?.split('\n') || [];
+  }
   openModal() {
     this.isModalOpen = true;
   }

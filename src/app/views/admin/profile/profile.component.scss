@@ -93,3 +93,9 @@ body{
   font-weight: 600;
   color: #0062cc;
 }
+.profile-img input[type="file"] {
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+  cursor: pointer;
+}
