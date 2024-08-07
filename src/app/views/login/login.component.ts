@@ -50,7 +50,7 @@ export class LoginComponent {
           if (res.role === 'ADMIN') {
             this.router.navigate(['/admin']);
           } else {
-            this.router.navigate(['/contact']);
+            this.router.navigate(['/']);
           }
         } else {
           this.errorMsg = 'Invalid response from server';

@@ -23,8 +23,9 @@
             </div>
           </div>
           <div class="jobPost-right">
-            <button (click)="onUpdate(jobPost.id)" class="btn btn-primary ">Update</button>
-            <button (click)="onDelete(jobPost.id)" class="btn btn-danger">Delete</button>
+            <i class="fas fa-pencil-alt update-icon" (click)="onUpdate(jobPost.id)"></i>
+
+            <i class="fas fa-trash delete-icon" (click)="onDelete(jobPost.id)"></i>
           </div>
         </div>
       </div>

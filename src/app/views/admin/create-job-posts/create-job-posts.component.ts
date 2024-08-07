@@ -47,7 +47,5 @@ export class CreateJobPostsComponent implements OnInit {
     }
   }
 
-  goToJobPosts(): void {
-    this.router.navigate(['/job-details/:id']);
-  }
+
 }

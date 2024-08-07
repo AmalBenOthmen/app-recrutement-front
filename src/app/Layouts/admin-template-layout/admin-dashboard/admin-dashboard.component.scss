@@ -22,3 +22,12 @@
   height: 50px;
   margin-left: 20px;
 }
+.messages-notif-box {
+  max-height: 300px; /* Adjust this height as needed */
+  overflow-y: auto;
+}
+
+.notif-center {
+  max-height: 100%;
+  overflow-y: auto;
+}

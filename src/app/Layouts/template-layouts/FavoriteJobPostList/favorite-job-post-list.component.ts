@@ -5,7 +5,7 @@ import { TokenService } from '../../../services/token/token.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-favorite-job-post-list',
@@ -28,7 +28,8 @@ export class FavoriteJobPostListComponent implements OnInit {
   constructor(
     private favoriteJobPostService: FavoriteJobPostService,
     private authService: TokenService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -55,10 +56,12 @@ export class FavoriteJobPostListComponent implements OnInit {
 
   viewJobDetails(id?: number): void {
     if (id !== undefined) {
-      // Implement the logic to view job details
-      console.log(`Viewing details for job post with ID: ${id}`);
+      // Redirect to the job details route
+      this.router.navigate(['/job-details', id]); // Adjust the route path as needed
     } else {
-      console.error('Job post ID is undefined');
+      // Show an alert when the ID is undefined
+      window.alert('Job post ID is undefined');
     }
   }
+
 }

@@ -4101,6 +4101,7 @@ h3 {
   font-size: 16px;
   line-height: 28px;
   font-weight: 400;
+  padding-left: 25px;
 }
 
 /* line 130, ../../Arafath/CL/December/235. Job board/HTML/scss/_job_details.scss */
@@ -4110,7 +4111,7 @@ h3 {
   color: #7A838B;
   font-weight: 400;
   position: relative;
-  padding-left: 20px;
+  padding-left: -25px;
   padding-bottom: 5px;
   margin-bottom: 10px;
 
@@ -4119,7 +4120,7 @@ h3 {
 /* line 137, ../../Arafath/CL/December/235. Job board/HTML/scss/_job_details.scss */
 .job_details_area .descript_wrap .single_wrap ul li::before {
   position: absolute;
-  left: 0;
+  left: -30%;
 
   top: 0;
   width: 7px;
@@ -4299,7 +4300,8 @@ h3 {
   font-weight: 400;
   color: #AAB1B7;
   line-height: 38px;
-  padding-left: 18px;
+
+  margin-right: -20px;
   position: relative;
 }
 
@@ -4312,7 +4314,7 @@ h3 {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  left: 0;
+  left: -30px;
   content: '';
   top: 16px;
 }

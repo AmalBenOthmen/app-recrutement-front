@@ -120,62 +120,92 @@ ul {
   padding: 10px 20px;
 }
 
-.job-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+.job-list-container {
   padding: 20px;
+  max-width: 600px; /* Reduced width for a smaller container */
+  margin: 0 auto; /* Center the container */
 }
 
-.job-card {
-  background: #f6ebeb;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 900px;
-  padding: 10px;
-  transition: transform 0.3s;
+.title {
+  font-family: "Lato", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-size: 2.5em; /* Slightly larger font size for emphasis */
+  font-weight: bold; /* Make text bold */
+  color: #021249; /* Text color for better contrast */
+  margin-top: 20px; /* Space above title */
+  margin-bottom: 20px; /* Space below title */
+  text-align: center; /* Center the title */
 }
 
-.job-card:hover {
-  transform: translateY(-5px);
+.job-list {
+  counter-reset: index;
+  padding: 0;
+  list-style: none; /* Remove default list styling */
+  margin: 0; /* Remove default margin */
+}
+
+.job-list li {
+  counter-increment: index;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 15px; /* Space below each card */
+  background: #f9f9f9; /* Light background for the cards */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Enhanced shadow effect */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+}
+
+.job-list li:hover {
+  transform: translateY(-5px); /* Hover effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+}
+
+.job-list li::before {
+  content: counters(index, ".", decimal-leading-zero);
+  font-size: 2rem; /* Increased size for the numbers */
+  font-weight: bold;
+  min-width: 60px;
+  padding-right: 15px;
+  font-variant-numeric: tabular-nums;
+  background-image: linear-gradient(to bottom, #007bff, #f6dd7a); /* Gradient for numbers */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: right;
+  display: inline-block; /* Ensure alignment */
 }
 
 .job-card-content {
+  flex: 1; /* Allow content to fill available space */
   text-align: left;
 }
 
-.job-card h4 {
-  font-size: 20px;
+.job-card-content h4 {
+  font-size: 22px; /* Slightly larger font size for the title */
   margin-bottom: 10px;
+  color: #333; /* Darker color for better readability */
 }
 
-.job-card p {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 20px;
+.job-card-content p {
+  font-size: 15px; /* Increased font size for better readability */
+  color: #555; /* Slightly darker color for better contrast */
+  margin-bottom: 15px;
 }
 
 .job-card-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* Align actions to the end */
   align-items: center;
 }
 
 .view-details {
-  color: #007bff;
+  color: #fff; /* White text color */
   text-decoration: none;
+  background: linear-gradient(45deg, #f6dd7a, #457dd2); /* Gradient background */
+  border-radius: 5px;
+  padding: 8px 15px; /* Increased padding for a better button appearance */
+  transition: background 0.3s; /* Smooth background color change */
 }
 
-
-.title {
-  margin-left: 550px;
-  font-family: "Lato", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-  font-size: large;
-  font-weight: bold; /* Rend le texte en gras */
-  color: #021249; /* Change la couleur du texte pour un meilleur contraste */
-
-  margin-top: 20px; /* Ajoute un espace au-dessus du titre */
-  margin-bottom: 20px; /* Ajoute un espace en dessous du titre */
+.view-details:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }
-

@@ -14,6 +14,7 @@
             <span>{{ message.sentDate | date: 'short' }}</span>
             <span *ngIf="message.read" class="tick-mark">✔️</span> <!-- Tick mark for read messages -->
           </div>
+          <i *ngIf="message.id !== undefined" class="fas fa-trash delete-icon" (click)="deleteMessage(message.id)"></i>
         </div>
         <div *ngIf="selectedMessageId === message.id" class="message-content">
           <p>{{ message.message }}</p>

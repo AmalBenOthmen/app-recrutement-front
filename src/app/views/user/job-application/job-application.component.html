@@ -1,102 +1,103 @@
-<div class="Apply-for-job">
-  <h4>Apply for the job</h4>
-  <form (ngSubmit)="onSubmit()" #jobApplicationForm="ngForm">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="input_field">
-          <input type="text" placeholder="First name" [(ngModel)]="application.firstName" name="firstName" required>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="input_field">
-          <input type="text" placeholder="Last name" [(ngModel)]="application.lastName" name="lastName" required>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="input_field1">
-          <select class="wide1" [(ngModel)]="application.gender" name="gender" required>
-            <option data-display="Gender" value="" disabled selected>Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="input_field">
-          <input type="number" placeholder="Age" [(ngModel)]="application.age" name="age" required>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="input_field">
-          <input type="text" placeholder="Address" [(ngModel)]="application.address" name="address" required>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="input_field">
-          <input type="tel" placeholder="Phone number" [(ngModel)]="application.phoneNumber" name="phoneNumber" required>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="input_field">
-          <input type="email" placeholder="Email" [(ngModel)]="application.email" name="email" required>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="input_field1">
-          <select class="wide1" [(ngModel)]="application.educationLevel" name="educationLevel" required>
-            <option data-display="Education Level" value="" disabled selected>Education Level</option>
-            <option value="High school level">High school level</option>
-            <option value="Baccalaureate">Baccalaureate</option>
-            <option value="BTP">BTP</option>
-            <option value="BTS">BTS</option>
-            <option value="CAP">CAP</option>
-            <option value="License">License</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="input_field">
-          <input type="text" placeholder="Speciality" [(ngModel)]="application.speciality" name="speciality" required>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="input_field">
-          <input type="url" placeholder="LinkedIn link" [(ngModel)]="application.linkedinLink" name="linkedinLink">
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <button type="button" class="btn btn-outline-secondary" id="inputGroupFileAddon02"><i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
-          </div>
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputGroupFile02" aria-describedby="inputGroupFileAddon02" (change)="onFileSelected($event, 'cv')" required>
-            <label class="custom-file-label" for="inputGroupFile02">{{ application.cv ? application.cv.name : 'Upload CV' }}</label>
+<div class="apply-for-job-container">
+  <div class="Apply-for-job">
+    <h4>Apply for the job</h4>
+    <form (ngSubmit)="onSubmit()" #jobApplicationForm="ngForm">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="input_field">
+            <input type="text" placeholder="First name" [(ngModel)]="application.firstName" name="firstName" required>
           </div>
         </div>
-      </div>
-      <div class="col-md-12">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <button type="button" class="btn btn-outline-secondary" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
-          </div>
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" (change)="onFileSelected($event, 'additionalDocuments')">
-            <label class="custom-file-label" for="inputGroupFile03">{{ application.additionalDocuments ? application.additionalDocuments.name : 'Upload additional documents' }}</label>
+        <div class="col-md-6">
+          <div class="input_field">
+            <input type="text" placeholder="Last name" [(ngModel)]="application.lastName" name="lastName" required>
           </div>
         </div>
-      </div>
-
-      <div class="col-md-12">
-        <div class="input_field">
-          <textarea cols="30" rows="10" placeholder="Cover letter" [(ngModel)]="application.coverLetter" name="coverLetter" required></textarea>
+        <div class="col-md-6">
+          <div class="input_field">
+            <select class="wide" [(ngModel)]="application.gender" name="gender" required>
+              <option value="" disabled selected hidden>Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="input_field">
+            <input type="number" placeholder="Age" [(ngModel)]="application.age" name="age" required>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="input_field">
+            <input type="text" placeholder="Address" [(ngModel)]="application.address" name="address" required>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="input_field">
+            <input type="tel" placeholder="Phone number" [(ngModel)]="application.phoneNumber" name="phoneNumber" required>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="input_field">
+            <input type="email" placeholder="Email" [(ngModel)]="application.email" name="email" required>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="input_field">
+            <select class="wide" [(ngModel)]="application.educationLevel" name="educationLevel" required>
+              <option value="" disabled selected hidden>Education Level</option>
+              <option value="High school level">High school level</option>
+              <option value="Baccalaureate">Baccalaureate</option>
+              <option value="BTP">BTP</option>
+              <option value="BTS">BTS</option>
+              <option value="CAP">CAP</option>
+              <option value="License">License</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="input_field">
+            <input type="text" placeholder="Speciality" [(ngModel)]="application.speciality" name="speciality" required>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="input_field">
+            <input type="url" placeholder="LinkedIn link" [(ngModel)]="application.linkedinLink" name="linkedinLink">
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-outline-secondary" id="inputGroupFileAddon02"><i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile02" aria-describedby="inputGroupFileAddon02" (change)="onFileSelected($event, 'cv')" required>
+              <label class="custom-file-label" for="inputGroupFile02">{{ application.cv ? application.cv.name : 'Upload CV' }}</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-outline-secondary" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" (change)="onFileSelected($event, 'additionalDocuments')">
+              <label class="custom-file-label" for="inputGroupFile03">{{ application.additionalDocuments ? application.additionalDocuments.name : 'Upload additional documents' }}</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="input_field">
+            <textarea cols="30" rows="10" placeholder="Cover letter" [(ngModel)]="application.coverLetter" name="coverLetter" required></textarea>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="submit_btn">
+            <button class="boxed-btn3 w-100" type="submit" [disabled]="!jobApplicationForm.form.valid">Apply Now</button>
+          </div>
         </div>
       </div>
-      <div class="col-md-12">
-        <div class="submit_btn">
-          <button class="boxed-btn3 w-100" type="submit" [disabled]="!jobApplicationForm.form.valid">Apply Now</button>
-        </div>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

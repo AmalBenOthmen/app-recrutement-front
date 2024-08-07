@@ -66,4 +66,18 @@ export class MessageService {
   loadMessages() {
     this.getAllMessages().subscribe();
   }
+  deleteMessage(id: number): Observable<void> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.tokenService.getToken()}`
+    });
+    return this.http.delete<void>(`${this.apiUrl}/messages/delete/${id}`, { headers }).pipe(
+      tap(() => {
+        const messages = this.messagesSubject.getValue();
+        const updatedMessages = messages.filter(m => m.id !== id);
+        this.messagesSubject.next(updatedMessages);
+      })
+    );
+  }
+
 }

@@ -361,7 +361,7 @@
                     class="dropdown-title d-flex justify-content-between align-items-center"
                   >
                     Messages
-                    <a href="#" class="small" (click)="markAllAsRead()">Mark all as read</a>
+                    <a  class="small" (click)="markAllAsRead()">Mark all as read</a>
                   </div>
                 </li>
                 <li>
@@ -475,34 +475,26 @@
               >
                 <div class="avatar-sm">
                   <img
-                    src="assets/admin-dashboard/assets/img/profile.jpg"
+                    src="assets/img/bleu-bg.jpg"
                     alt="..."
                     class="avatar-img rounded-circle"
                   />
                 </div>
                 <span class="profile-username">
                       <span class="op-7">Hi,</span>
-                      <span class="fw-bold">Hizrian</span>
+                      <span class="fw-bold"><h6 *ngIf="profile">{{ profile.firstname }} </h6></span>
                     </span>
               </a>
               <ul class="dropdown-menu dropdown-user animated fadeIn">
                 <div class="dropdown-user-scroll scrollbar-outer">
                   <li>
                     <div class="user-box">
-                      <div class="avatar-lg">
-                        <img
-                          src="assets/admin-dashboard/assets/img/profile.jpg"
-                          alt="image profile"
-                          class="avatar-img rounded"
-                        />
-                      </div>
+
+
                       <div class="u-text">
-                        <h4>Hizrian</h4>
-                        <p class="text-muted">hello.com</p>
-                        <a
-                          href="profile.html"
-                          class="btn btn-xs btn-secondary btn-sm"
-                        >View Profile</a
+                        <h4 *ngIf="profile">{{ profile.firstname }} {{ profile.lastname }}</h4>
+                        <p class="text-muted" *ngIf="profile">{{ profile.email }}</p>
+                        <a href="/admin/profile" class="btn btn-xs btn-secondary btn-sm">View Profile</a
                         >
                       </div>
                     </div>
@@ -528,7 +520,7 @@
     </div>
 
 <router-outlet></router-outlet>
-    <app-admin-container *ngIf="showAdminContainer"></app-admin-container>
+   
 
   <!-- End Custom template -->
 </div>

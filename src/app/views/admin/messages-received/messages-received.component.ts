@@ -24,7 +24,7 @@ export class MessagesReceivedComponent implements OnInit {
     this.messageService.getAllMessages().subscribe(
       (response: Message[] | undefined) => {
         if (response) {
-          this.messages = response.reverse(); // Ensure messages are defined
+          this.messages = response; // Ensure messages are defined
           console.log('Fetched messages:', this.messages); // Log the fetched messages
         } else {
           console.error('No messages found.');
@@ -55,4 +55,16 @@ export class MessagesReceivedComponent implements OnInit {
       console.error('Message ID is undefined');
     }
   }
+  deleteMessage(id: number) {
+    this.messageService.deleteMessage(id).subscribe(
+      () => {
+        this.messages = this.messages.filter(message => message.id !== id);
+        console.log('Message deleted:', id);
+      },
+      error => {
+        console.error('Error deleting message:', error);
+      }
+    );
+  }
 }
+

@@ -17,21 +17,21 @@
   <a routerLink="/browseJob" class="btn btn-primary">Browse Jobs</a>
 </div>
 
-<div *ngIf="favoriteJobPosts.length > 0" class="job-list">
+<div *ngIf="favoriteJobPosts.length > 0" class="job-list-container">
   <div class="title">
-    Your Favotite JobPost List:
+    Your Favorite Job Post List:
   </div>
-  <div *ngFor="let favorite of favoriteJobPosts" class="job-card">
-
-    <div class="job-card-content">
-      <h4>{{ favorite.jobPost.title }}</h4>
-      <p>{{ favorite.jobPost.description }}</p>
-      <div class="job-card-actions">
-        <a class="view-details" (click)="viewJobDetails(favorite.jobPost.id)">
-          View Details
-        </a>
-
+  <ul class="job-list">
+    <li *ngFor="let favorite of favoriteJobPosts" class="job-card">
+      <div class="job-card-content">
+        <h4>{{ favorite.jobPost.title }}</h4>
+        <p>{{ favorite.jobPost.description }}</p>
+        <div class="job-card-actions">
+          <a class="view-details" (click)="viewJobDetails(favorite.jobPost.id)">
+            View Details
+          </a>
+        </div>
       </div>
-    </div>
-  </div>
+    </li>
+  </ul>
 </div>
